@@ -405,7 +405,7 @@ function stopTransitionOnResize() {
   window.addEventListener("resize", () => {
     navBar.classList.add("no-transition");
 
-    clearTimeout(resizeTimeout);
+    clearTimeout(resizeTimeout);  
     resizeTimeout = setTimeout(() => {
       navBar.classList.remove("no-transition");
     }, 1);
