@@ -2,11 +2,13 @@
 
 // Load all functions in as the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
+  menuChangeCategory();
+  homepageMenuJump();
+  menuMobileSwipe();
   activateHamburgerMenu();
   updateActiveNavLink();
   resetHomeLoadedClass();
   darkMode();
-  updateCopyrightYear();
   stopTransitionOnResize();
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  containers: ["#swup", "#swup-header-container", "#footer"]
+  containers: ["#swup", "#swup-header-container", "#footer"],
 });
 
 swup.hooks.on("page:view", () => {
@@ -204,9 +206,141 @@ function gsapScrollAnimations() {
   ScrollTrigger.refresh(true);
 }
 
-////////////////////////////////////////////////////////* Performance section scroll animation *////////////////////////////////////////////////////////////////////////*
+/////////////////////////////////////////////////////////////////* Menu section change menu *//////////////////////////////////////////////////////////////////////////*
 
-//////////////////////////////////////////////////////////////////* Testimonial Carousel */////////////////////////////////////////////////////////////////////////////*
+const menuButtons = document.querySelectorAll(".menu-headings__inner button");
+const menuWrapper = document.querySelector(".menu-items-container");
+const activeMenu = document.querySelector(".menu-items__inner.menu-is-active");
+
+function menuChangeCategory() {
+  function updateMenuHeight(selectedMenu) {
+    menuWrapper.style.height = selectedMenu.scrollHeight + "px";
+  }
+
+  if (activeMenu) {
+    updateMenuHeight(activeMenu);
+  }
+
+  window.addEventListener("resize", () => {
+    if (activeMenu) {
+      updateMenuHeight(activeMenu);
+    }
+  });
+
+  menuButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const menuDataTarget = button.dataset.menu;
+      const activeMenu = document.querySelector(
+        ".menu-items__inner.menu-is-active"
+      );
+      const selectedMenuItem = document.querySelector(
+        `.menu-items__inner[data-menu="${menuDataTarget}"]`
+      );
+
+      selectedMenuItem.setAttribute("aria-hidden", "false");
+
+      if (selectedMenuItem.classList.contains("menu-is-active")) return;
+
+      if (activeMenu) {
+        activeMenu.classList.add("menu-is-leaving");
+        activeMenu.classList.remove("menu-is-active");
+        activeMenu.setAttribute("aria-hidden", "true");
+
+        setTimeout(() => {
+          activeMenu.classList.remove("menu-is-leaving");
+        }, 500);
+      }
+
+      selectedMenuItem.classList.add("menu-is-active");
+      updateMenuHeight(selectedMenuItem);
+
+      menuButtons.forEach((btn) => {
+        btn.classList.remove("menu-is-active");
+        btn.setAttribute("aria-selected", "false");
+      });
+
+      button.classList.add("menu-is-active");
+      button.setAttribute("aria-selected", "true");
+    });
+  });
+}
+
+///////* Jump to correct menu section from homepage *///////////
+
+function homepageMenuJump() {
+  const windowHash = window.location.hash.replace("#", "");
+  if (!windowHash) return;
+
+  const targetButton = document.querySelector(
+    `.menu-headings__inner button[data-menu="${windowHash}"]`
+  );
+  const targetMenu = document.querySelector(
+    `.menu-items__inner[data-menu="${windowHash}"]`
+  );
+  const activeMenu = document.querySelector(
+    ".menu-items__inner.menu-is-active"
+  );
+  const activeButton = document.querySelector(
+    ".menu-headings__inner button.menu-is-active"
+  );
+
+  if (!targetMenu || !targetButton) return;
+
+  activeMenu.classList.remove("menu-is-active");
+  activeButton.classList.remove("menu-is-active");
+
+  targetMenu.classList.add("menu-is-active");
+  targetMenu.setAttribute("aria-hidden", "false");
+  targetButton.classList.add("menu-is-active");
+  targetButton.setAttribute("aria-selected", "true");
+
+  // Prevent focus-outline from appearing on menu change
+  window.addEventListener("load", () => {
+    if (window.location.hash) {
+      document.activeElement?.blur();
+    }
+  });
+}
+
+///////////////* Mobile swipe functionality *////////////////
+
+function menuMobileSwipe() {
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50;
+
+  menuWrapper?.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  menuWrapper?.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const diff = touchEndX - touchStartX;
+
+    if (Math.abs(diff) < swipeThreshold) return;
+
+    const buttons = Array.from(menuButtons);
+    const activeButton = document.querySelector(
+      ".menu-headings__inner button.menu-is-active"
+    );
+
+    if (!activeButton) return;
+
+    const currentIndex = buttons.indexOf(activeButton);
+
+    if (diff < 0 && currentIndex < buttons.length - 1) {
+      buttons[currentIndex + 1].click();
+    }
+
+    if (diff > 0 && currentIndex > 0) {
+      buttons[currentIndex - 1].click();
+    }
+  }
+}
 
 //////////////////////////////////////////////////////////* Our services page heading underline draw *//////////////////////////////////////////////////////////////////*
 
@@ -304,33 +438,6 @@ function updateActiveNavLink() {
   });
 }
 
-///////////////////////////////////////////////////////////////* Sticky navigation bar *//////////////////////////////////////////////////////////////////////////////*
-
-function initStickyHeader() {
-  const hamburgerBtn = document.querySelector(".hamburger-btn");
-  const navBar = document.querySelector(".nav-bar");
-
-  function closeMenuSafely() {
-    navBar.classList.remove("hamburger-btn__open");
-    hamburgerBtn.classList.remove("active");
-    setNavAttributes();
-  }
-
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector("#header");
-    const isScrolled = window.scrollY > 400;
-    const headerWasSticking = header.classList.contains("sticking");
-
-    if (isScrolled && !headerWasSticking) {
-      header.classList.add("sticking");
-      closeMenuSafely();
-    } else if (window.scrollY === 0 && headerWasSticking) {
-      header.classList.remove("sticking");
-      closeMenuSafely();
-    }
-  });
-}
-
 /////////////////////////////////////////////////////////////////* Dark-mode change */////////////////////////////////////////////////////////////////////////////////*
 
 function darkMode() {
@@ -385,17 +492,6 @@ function darkMode() {
   });
 }
 
-//////////////////////////////////////////////////////////////* Footer copyright-year update *////////////////////////////////////////////////////////////////////////*
-
-function updateCopyrightYear() {
-  const currentYear = new Date().getFullYear();
-  const copyrightSymbol = "\u00A9";
-
-  /* document.getElementById(
-    "year"
-  ).innerHTML = `<strong>${copyrightSymbol} Copyright ${currentYear}</strong>`; */
-}
-
 ////////////////////////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////////////////////*
 
 function stopTransitionOnResize() {
@@ -405,7 +501,7 @@ function stopTransitionOnResize() {
   window.addEventListener("resize", () => {
     navBar.classList.add("no-transition");
 
-    clearTimeout(resizeTimeout);  
+    clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       navBar.classList.remove("no-transition");
     }, 1);

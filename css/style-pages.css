@@ -6,33 +6,297 @@
 }
 
 @layer base {
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 - ABOUT / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 / SECTION-TWO / HISTORY ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  .cmp-hero-section__image--pg2-s1 {
+    background: url("/assets/images/bueni-6.avif");
+    background-size: cover;
+    background-position: 50%;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 24, 65, 0.35);
+  }
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 - ABOUT / SECTION-TWO / HISTORY ***       \\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 / SECTION-TWO / MENU ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+    .about-text-container {
+      @media (width > 47.5rem) {
+        max-width: 40%;
+      }
+    }
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 / SECTION-TWO / GALLERY ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+    .about-image-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--margin-pictures);
+      align-items: end;
 
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+      img:nth-child(1) {
+        justify-self: end;
+        aspect-ratio: 1.1 / 1;
+      }
+
+      img:nth-child(2) {
+        aspect-ratio: 1 / 1.1;
+      }
+
+      img:nth-child(3) {
+        position: relative;
+        max-width: 60%;
+        grid-column: span 2;
+        justify-self: center;
+        left: 6%;
+      }
+
+      @media (width > 47.5rem) {
+        img:nth-child(1) {
+          aspect-ratio: 1 / 1.2;
+          max-width: 75%;
+        }
+
+        img:nth-child(2) {
+          max-height: 72%;
+        }
+
+        img:nth-child(3) {
+          align-self: start;
+          max-height: 90%;
+        }
+      }
+    }
+
+    @media (width > 47.5rem) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 - MENU / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .cmp-hero-section__image--pg3-s1 {
+    background: url("/assets/images/bueni-18.jpg");
+    background-size: cover;
+    background-position: 50%;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 24, 65, 0.35);
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 - MENU / SECTION-TWO / MENU ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+
+    @media (width > 62.5rem) {
+      gap: 5rem;
+    }
+  }
+
+  .menu-headings-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    text-align: center;
+
+    .menu-headings__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      button {
+        position: relative;
+        color: var(--clr-micro-heading-dark);
+        opacity: 0.8;
+        transition: color 0.3s ease-out;
+
+        &:hover:not(.menu-is-active) {
+          color: var(--clr-hover-accent);
+        }
+      }
+
+      button::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--blue-100) 30%,
+          var(--blue-300) 70%,
+          transparent
+        );
+        opacity: 0.85;
+        transform: translateX(-50%);
+        transition: width 0.8s ease, transform 0.8s ease;
+      }
+
+      button.menu-is-active::after {
+        width: 110%;
+        transform: translateX(-50%);
+      }
+
+      @media (width > 31.25rem) {
+        display: contents;
+      }
+    }
+
+    @media (width > 62.5rem) {
+      flex-direction: row;
+      gap: 7rem;
+    }
+  }
+
+  .menu-items-container {
+    position: relative;
+    touch-action: pan-y;
+  }
+
+  .menu-items__inner {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    opacity: 0;
+    transform: translateX(5rem);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+
+    &.menu-is-active {
+      display: grid;
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.5s;
+    }
+
+    &.menu-is-leaving {
+      opacity: 0;
+      transform: translateX(-5rem);
+    }
+
+    @media (width > 62.5rem) {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+
+  .menu-items__selection {
+    display: flex;
+    gap: 1rem;
+
+    img {
+      width: 100%;
+      max-width: 30%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+
+      @media (width > 62.5rem) {
+        gap: 0.5rem;
+        max-width: 35%;
+        aspect-ratio: 1 / 1;
+        gap: 1.2rem;
+      }
+    }
+
+    p {
+      opacity: 0.9;
+    }
+
+    .menu-items__selection__text-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .menu-items__selection__text-container__inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        h3 {
+          font-size: var(--fs-larger-text);
+          font-weight: 500;
+        }
+
+        span {
+          position: relative;
+          font-size: var(--fs-larger-text);
+          font-weight: 300;
+          bottom: 0.35rem;
+        }
+      }
+    }
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 - GALLERY / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .cmp-hero-section__image--pg4-s1 {
+    background: url("/assets/images/bueni-17.webp");
+    background-size: cover;
+    background-position: 50%;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 24, 65, 0.35);
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 - GALLERY / SECTION-TWO / GALLERY ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .gallery-grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (width > 47.5rem) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (width > 62.5rem) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 - CONTACT / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .contact-page-google-maps {
+    display: block;
+    max-width: 85%;
+    aspect-ratio: 1.75 / 1;
+    margin-top: 2.5rem;
+    margin-inline: auto;
+
+    @media (width > 47.5rem) {
+      max-width: 70%;
+      aspect-ratio: 1.5 / 1;
+      margin-top: 5rem;
+    }
+
+    @media (width > 62.5rem) {
+      max-width: 60%;
+      aspect-ratio: 2 / 1;
+      margin-top: 5rem;
+    }
+  }
 }
 
 @layer animations {
