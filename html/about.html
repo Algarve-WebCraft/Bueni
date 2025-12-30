@@ -32,17 +32,20 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-regular.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-500.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-600.woff2">
+    <link rel="preload" as="image" type="image/webp" href="../assets/logos/business-logo.webp">
     <link rel="preload" href="../css/critical.css" as="style">
     <link rel="stylesheet" href="../css/critical.css">
+    <link rel="stylesheet" href="../css/style-main.css" media="print" onload="this.media='all'">
     <link rel="preload" href="../css/style-pages.css" as="style">
-    <link rel="stylesheet" href="../css/style-pages.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/style-pages.css">
     <link rel="preload" href="../css/dark-mode.css" as="style">
     <link rel="stylesheet" href="../css/dark-mode.css">
-    <link rel="stylesheet" href="../css/style-main.css" media="print" onload="this.media='all'">
-    <link rel="preload" as="image" type="image/webp" href="../assets/logos/business-logo.webp">
+    <link rel="stylesheet" href="../css/glightbox.min.css" media="print" onload="this.media='all'">
     <script src="../js/gsap.min.js" defer></script>
     <script src="../js/scrolltrigger.min.js" defer></script>
     <script src="../js/swup.js" defer></script>
+    <script src="../js/masonry.js" defer></script>
+    <script src="../js/glightbox.min.js" defer></script>
     <script type="module" src="../js/script.js"></script>
     <noscript>
       <link rel="stylesheet" href="../css/style.css">
@@ -130,10 +133,10 @@
 
           <div class="cmp-page-hero-flex">
             <div>
-              <h1 id="about-hero-heading" class="cmp-hero-heading">Learn our <span class="cmp-hero-heading-span">interesting history</span></h1>
+              <h1 id="about-hero-heading" class="cmp-hero-heading">The story behind<span class="cmp-hero-heading-span">the kitchen</span></h1>
             </div>
             <div class="hero-flex__inner-flex">
-              <p class="cmp-main-text cmp-main-image-text">Thoughtfully prepared dishes made with quality ingredients, balancing classic techniques with a modern approach to flavor.</p>
+              <p class="cmp-main-text cmp-main-image-text">Discover our story, where tradition and passion shape our kitchen. A journey through time, revealing the history that inspires us.</p>
             </div>
           </div>
 
@@ -145,12 +148,12 @@
       <!------------------------------------------------------------------------------------------------------------>
 
       <section class="cmp-light-section" aria-labelledby="history-heading">
-        <div class="wrapper wrapper--mobile-s">
+        <div class="wrapper wrapper--narrow-m wrapper--mobile-s">
 
           <div class="about-container">
             <div class="about-text-container">
-              <h2 id="history-heading" class="cmp-main-heading">A little bit of our history</h2>
-              <p class="cmp-main-text cmp-main-text-margins">This will be a short history of the founding of Beuni. Whether you're hosting an intimate dinner or a large celebration, our team brings seasonal flavour and refined service to your table. We offer full-service catering, custom menus, and personalized experiences for events of all kinds — weddings, corporate gatherings, private dinners, and more. <br><br> This will be a short history of the founding of Beuni. Whether you're hosting an intimate dinner or a large celebration, our team brings seasonal flavour and refined service to your table. We offer full-service catering, custom menus, and personalized experiences for events of all kinds — weddings, corporate gatherings, private dinners, and more. <br><br> This will be a short history of the founding of Beuni. Whether you're hosting an intimate dinner or a large celebration, our team brings seasonal flavour and refined service to your table. We offer full-service catering, custom menus, and personalized experiences for events of all kinds — weddings, corporate gatherings, private dinners, and more.</p>
+              <h2 id="history-heading" class="cmp-main-heading">From Humble Beginnings</h2>
+              <p class="cmp-main-text cmp-main-text-margins">Founded over a decade ago, our restaurant began as a small family endeavor with a passion for quality ingredients and traditional recipes. Over the years, we have grown while staying true to our roots, blending classic techniques with modern flavors to create a dining experience that delights every guest. <br><br> Founded over a decade ago, our restaurant began as a small family endeavor with a passion for quality ingredients and traditional recipes. Over the years, we have grown while staying true to our roots, blending classic techniques with modern flavors to create a dining experience that delights every guest. <br><br> Founded over a decade ago, our restaurant began as a small family endeavor with a passion for quality ingredients and traditional recipes. Over the years, we have grown while staying true to our roots, blending classic techniques with modern flavors to create a dining experience that delights every guest.</p>
             </div>
 
             <div class="about-image-container">
@@ -167,12 +170,12 @@
       <!----------------------------------------- PAGE 2 / SECTION-THREE / CONTACT ---------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section class="cmp-light-section contact-section" aria-labelledby="contact-heading">
+      <section class="cmp-light-section contact-section" aria-labelledby="contact-page-2-heading">
         <div class="contact-image"></div>
         <div class="wrapper wrapper--mobile-m">
 
           <div class="contact-flex-container">
-            <h2 id="contact-heading" class="cmp-main-heading">We're here to<span class="hero-heading-span">welcome you</span></h2>
+            <h2 id="contact-page-2-heading" class="cmp-main-heading">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
 
             <div class="contact-flex__text-container">
               <div class="contact-text-container__inner-flex">
@@ -187,7 +190,7 @@
               </div>
 
               <div class="contact-text-container__inner-flex">
-                <h3 class="cmp-micro-heading">Our location</h3>
+                <h3 class="cmp-micro-heading">Find us</h3>
                 <a class="cmp-main-text" href="https://maps.app.goo.gl/dBj8uBxUn3Pg4NLE6" target="_blank" rel="noopener">
                    Rua da Laranjeira 1,<br> 8600-697 Lagos
                 </a>

@@ -1,10 +1,11 @@
 "use strict";
 
-// Load all functions in as the DOM is ready
+////// Load all functions in as the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
   menuChangeCategory();
   homepageMenuJump();
   menuMobileSwipe();
+  setGalleryMasonryAndGlightbox();
   activateHamburgerMenu();
   updateActiveNavLink();
   resetHomeLoadedClass();
@@ -20,12 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  containers: ["#swup", "#swup-header-container", "#footer"],
+  containers: ["#swup", "#swup-header-container", "#gallery-masonry-container", "#footer"],
 });
 
 swup.hooks.on("page:view", () => {
   activateHamburgerMenu();
   updateActiveNavLink();
+  setGalleryMasonryAndGlightbox();
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -265,7 +267,7 @@ function menuChangeCategory() {
   });
 }
 
-///////* Jump to correct menu section from homepage *///////////
+//// Jump to correct menu section from homepage
 
 function homepageMenuJump() {
   const windowHash = window.location.hash.replace("#", "");
@@ -302,7 +304,7 @@ function homepageMenuJump() {
   });
 }
 
-///////////////* Mobile swipe functionality *////////////////
+///// Mobile swipe functionality
 
 function menuMobileSwipe() {
   let touchStartX = 0;
@@ -342,7 +344,50 @@ function menuMobileSwipe() {
   }
 }
 
-//////////////////////////////////////////////////////////* Our services page heading underline draw *//////////////////////////////////////////////////////////////////*
+//////////////////////////////////////////////////////////* Gallery page Masonry layout + Glightbox *//////////////////////////////////////////////////////////////////*
+
+function setGalleryMasonryAndGlightbox() {
+  const galleryPage = document.querySelector(".gallery-page-container");
+
+  if (!galleryPage) return;
+
+  const msnry = new Masonry(galleryPage, {
+    itemSelector: "a",
+    columnWidth: "a",
+    percentPosition: true,
+    fitWidth: true,
+  });
+
+  function getGalleryGutter() {
+    if (window.innerWidth < 500) {
+      return 10;
+    } else if (window.innerWidth < 850) {
+      return 15;
+    } else {
+      return 20;
+    }
+  }
+
+  msnry.options.gutter = getGalleryGutter();
+  msnry.layout();
+
+  window.lightbox = GLightbox({
+    selector: ".glightbox",
+    loop: false,
+    zoomable: false,
+    keyboardNavigation: true,
+    touchNavigation: true,
+    openEffect: "fade",
+    closeEffect: "fade",
+  });
+
+  galleryPage?.querySelectorAll("a.glightbox").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
+}
 
 ////////////////////////////////////////////////////* Hamburger menu and Navigation accessibility attributes */////////////////////////////////////////////////////////*
 

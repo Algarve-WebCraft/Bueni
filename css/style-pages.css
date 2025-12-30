@@ -16,6 +16,7 @@
     background-position: 50%;
     background-blend-mode: overlay;
     background-color: rgba(10, 24, 65, 0.35);
+    top: clamp(10.5rem, 9.5vw + 7rem, 14.75rem);
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -29,8 +30,16 @@
     gap: 2rem;
 
     .about-text-container {
+      p {
+        margin-top: 1rem;
+      }
+
       @media (width > 47.5rem) {
         max-width: 40%;
+
+        p {
+          margin-top: 1.5rem;
+        }
       }
     }
 
@@ -90,6 +99,7 @@
     background-position: 50%;
     background-blend-mode: overlay;
     background-color: rgba(10, 24, 65, 0.35);
+    top: clamp(10.85rem, 12vw + 7rem, 14.75rem);
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -260,17 +270,57 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 - GALLERY / SECTION-TWO / GALLERY ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .gallery-grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .gallery-page-heading-container {
+    text-align: center;
+
+    h2 {
+      margin-inline: auto;
+      margin-bottom: 1.25rem;
+
+      @media (width > 47.5rem) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    p {
+      margin-bottom: 3rem;
+      opacity: 0.85;
+
+      @media (width > 47.5rem) {
+        margin-bottom: 4.5rem;
+      }
+    }
+  }
+
+  .gallery-page-container {
+    margin-inline: auto;
+
+    a {
+      display: inline-block;
+      width: 48%;
+      margin-bottom: var(--margin-pictures);
+    }
+
+    img {
+      object-fit: cover;
+      object-position: center 50%;
+      cursor: pointer;
+    }
+
+    a:nth-child(1) {
+      aspect-ratio: 2 / 1;
+    }
 
     @media (width > 47.5rem) {
-      grid-template-columns: 1fr 1fr;
+      a {
+        width: 31.5%;
+      }
     }
 
     @media (width > 62.5rem) {
-      grid-template-columns: 1fr 1fr 1fr;
+      a {
+        width: 32.3%;
+      }
     }
   }
 
@@ -278,23 +328,107 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 - CONTACT / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .contact-page-google-maps {
-    display: block;
-    max-width: 85%;
-    aspect-ratio: 1.75 / 1;
-    margin-top: 2.5rem;
-    margin-inline: auto;
+  .cmp-light-section--pg5-s1 {
+    padding-top: clamp(6.75rem, 10vw, 8.35rem);
+    text-align: center;
+
+    @media (width > 31.25rem) {
+      text-align: unset;
+    }
+  }
+
+  .contact-flex-container--pg5-s1 {
+    margin-right: unset;
 
     @media (width > 47.5rem) {
-      max-width: 70%;
-      aspect-ratio: 1.5 / 1;
-      margin-top: 5rem;
+      flex-direction: column;
+      justify-content: unset;
+      gap: 14.5rem;
+    }
+  }
+
+  .contact-image--pg5-s1 {
+    margin-top: clamp(2rem, 4vw + 0.5rem, 4rem);
+
+    @media (width > 47.5rem) {
+      aspect-ratio: 1.35 / 1;
+      max-width: 93%;
+      max-height: clamp(22rem, 27vw + 8rem, 28rem);
+    }
+
+    @media (width < 26.25rem) {
+      margin-top: 1.25rem;
+    }
+  }
+
+  .contact-flex__text-container--pg5-s1 {
+    margin-top: -1.75rem;
+
+    @media (width > 31.25rem) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      gap: 1rem;
+    }
+
+    @media (width > 47.5rem) {
+      margin-top: clamp(4rem, 10vw + 1rem, 10rem);
     }
 
     @media (width > 62.5rem) {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    @media (width < 26.25rem) {
+      margin-top: 0;
+    }
+  }
+
+  .contact-text-container__inner-flex--pg5-s1 {
+    &:first-of-type {
+      @media (width > 62.5rem) {
+        justify-self: center;
+      }
+    }
+
+    &:last-of-type {
+      @media (width > 62.5rem) {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: start;
+        margin-right: clamp(15rem, 24vw, 20rem);
+      
+      }
+      @media (width > 81.25rem) {
+        margin-right: clamp(22rem, 32vw, 30rem);
+      }
+    }
+  }
+
+  .contact-page-google-maps {
+    position: relative;
+    display: block;
+    max-width: 75%;
+    aspect-ratio: 1.75 / 1;
+    margin-top: 2rem;
+    margin-inline: auto;
+    grid-column: 1/ 3;
+
+    @media (width > 47.5rem) {
       max-width: 60%;
+    }
+
+    @media (width > 62.5rem) {
+      grid-column: 3;
+      align-self: center;
       aspect-ratio: 2 / 1;
-      margin-top: 5rem;
+      max-width: 60%;
+      margin-left: 35%;
+      margin-top: 0;
+      grid-column: 2 / 4;
+      grid-row: 1;
     }
   }
 }

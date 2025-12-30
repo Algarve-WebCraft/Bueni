@@ -437,7 +437,7 @@
 
     @media (width > 47.5rem) {
       aspect-ratio: 1 / 2;
-      max-width: 64%;
+      max-width: min(64%, 1350px);
       max-height: clamp(31.5rem, 48vw, 33rem);
     }
   }

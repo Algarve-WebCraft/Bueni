@@ -32,17 +32,20 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-regular.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-500.woff2">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/inter-v20-latin-600.woff2">
+    <link rel="preload" as="image" type="image/webp" href="../assets/logos/business-logo.webp">
     <link rel="preload" href="../css/critical.css" as="style">
     <link rel="stylesheet" href="../css/critical.css">
+    <link rel="stylesheet" href="../css/style-main.css" media="print" onload="this.media='all'">
     <link rel="preload" href="../css/style-pages.css" as="style">
-    <link rel="stylesheet" href="../css/style-pages.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../css/style-pages.css">
     <link rel="preload" href="../css/dark-mode.css" as="style">
     <link rel="stylesheet" href="../css/dark-mode.css">
-    <link rel="stylesheet" href="../css/style-main.css" media="print" onload="this.media='all'">
-    <link rel="preload" as="image" type="image/webp" href="../assets/logos/business-logo.webp">
+    <link rel="stylesheet" href="../css/glightbox.min.css" media="print" onload="this.media='all'">
     <script src="../js/gsap.min.js" defer></script>
     <script src="../js/scrolltrigger.min.js" defer></script>
     <script src="../js/swup.js" defer></script>
+    <script src="../js/masonry.js" defer></script>
+    <script src="../js/glightbox.min.js" defer></script>
     <script type="module" src="../js/script.js"></script>
     <noscript>
       <link rel="stylesheet" href="../css/style.css">
@@ -124,15 +127,15 @@
       <!----------------------------------------- PAGE 5 / SECTION-ONE / CONTACT ---------------------------------->
       <!------------------------------------------------------------------------------------------------------------->
 
-      <section class="cmp-light-section contact-section contact-section--no-divide" aria-labelledby="contact-heading">
-        <div class="contact-image"></div>
-        <div class="wrapper wrapper--mobile-m">
+      <section class="cmp-light-section cmp-light-section--pg5-s1" aria-labelledby="contact-page-5-heading">
+        <div class="contact-image contact-image--pg5-s1"></div>
+        <div class="wrapper wrapper--mobile-m wrapper--tablet-xl">
 
-          <div class="contact-flex-container">
-            <h2 id="contact-heading" class="cmp-main-heading">We're here to<span class="hero-heading-span">welcome you</span></h2>
+          <div class="contact-flex-container contact-flex-container--pg5-s1">
+            <h2 id="contact-page-5-heading" class="cmp-hero-heading">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
 
-            <div class="contact-flex__text-container">
-              <div class="contact-text-container__inner-flex">
+            <div class="contact-flex__text-container contact-flex__text-container--pg5-s1">
+              <div class="contact-text-container__inner-flex contact-text-container__inner-flex--pg5-s1">
                 <h3 class="cmp-micro-heading">Opening hours</h3>
                 <span class="cmp-main-text">Monday: 6AM - 11PM</span>
                 <span class="cmp-main-text">Tuesday: 6AM - 11PM</span>
@@ -143,8 +146,8 @@
                 <span class="cmp-main-text">Sunday: 6AM - 11PM</span>
               </div>
 
-              <div class="contact-text-container__inner-flex">
-                <h3 class="cmp-micro-heading">Our location</h3>
+              <div class="contact-text-container__inner-flex contact-text-container__inner-flex--pg5-s1">
+                <h3 class="cmp-micro-heading">Find us</h3>
                 <a class="cmp-main-text" href="https://maps.app.goo.gl/dBj8uBxUn3Pg4NLE6" target="_blank" rel="noopener">
                   Rua da Laranjeira 1,<br> 8600-697 Lagos
                 </a>
@@ -155,14 +158,11 @@
                   buenilagos@gmail.com
                 </a>
               </div>
+              <iframe class="contact-page-google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3182.1485282086314!2d-8.676565024531211!3d37.101581772162696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b31f64000d97d%3A0x6f72ec57ad5bdc2a!2sBUeNI%20Restaurante!5e0!3m2!1sen!2spt!4v1766261909108!5m2!1sen!2spt" allowfullscreen="true" loading="lazy"></iframe>
             </div>
-
-            <iframe class="contact-page-google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3182.1485282086314!2d-8.676565024531211!3d37.101581772162696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1b31f64000d97d%3A0x6f72ec57ad5bdc2a!2sBUeNI%20Restaurante!5e0!3m2!1sen!2spt!4v1766261909108!5m2!1sen!2spt" allowfullscreen="true" loading="lazy"></iframe>
-
           </div>
         </div>
       </section>
-
     </main>
 
     <!------------------------------------------------------------------------------------------------------------>

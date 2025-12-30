@@ -165,20 +165,20 @@
     --fs-sub-text: clamp(0.95rem, 1.5vw + 0.4rem, 1rem);
     --fs-body-text: clamp(1rem, 0.6vw + 0.7rem, 1.125rem);
     --fs-larger-text: clamp(1rem, 0.8vw + 0.75rem, 1.35rem);
-    --fs-hero-heading: clamp(2.625rem, 5vw + 1rem, 5.625rem);
+    --fs-hero-heading: clamp(3rem, 5vw + 1.6rem, 5.625rem);
     --fs-main-heading: clamp(3rem, 2.5vw + 2rem, 4rem);
     --fs-micro-heading: clamp(1.5rem, 3vw + 0.5rem, 1.75rem);
 
     --ff-heading: "IM Fell English", Arial, sans-serif;
     --ff-text: "Inter", Arial, sans-serif;
 
-    --padd-light: clamp(5rem, 4vw + 3rem, 6.25rem);
+    --padd-light: clamp(3.75rem, 6vw + 2rem, 6.25rem);
     --padd-dark: clamp(2.5rem, 5vw + 1rem, 6.25rem);
 
     --margin-text-top: clamp(0.5rem, 1.5vw, 0.75rem);
     --margin-text-bottom: clamp(1.25rem, 3vw, 1.5rem);
     --margin-text: clamp(0.75rem, 1vw, 0.875rem);
-    --margin-pictures: clamp(1.5rem, 3vw, 2rem);
+    --margin-pictures: clamp(0.75rem, 2vw, 1.25rem);
     --margin-icons: clamp(0.75rem, 1vw, 1rem);
     --margin-nav-horizontal: 1.75rem;
     --margin-nav-vertical: 1.25rem;
@@ -231,36 +231,6 @@
       transform: translateY(-2px);
     }
   }
-  
-
-  .cmp-page-hero-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 85dvh;
-    padding-top: clamp(4.3rem, calc(7rem - 3vw), 4.2rem);
-
-    @media (width < 23.75rem) {
-      min-height: 85dvh;
-      font-size: 2.2rem;
-      padding-top: 4.25rem;
-    }
-
-    @media (width > 47.5rem) {
-      min-height: min(100dvh, 62.5rem);
-    }
-  }
-
-  .cmp-hero-heading {
-    position: relative;
-    color: var(--clr-hero-heading);
-    font-size: var(--fs-hero-heading);
-    font-weight: 500;
-
-    @media (width < 23.75rem) {
-      font-size: 2.2rem;
-    }
-  }
 
   .cmp-main-heading,
   .cmp-main-heading-white {
@@ -302,6 +272,68 @@
     margin-bottom: var(--margin-text-bottom);
   }
 
+  .cmp-light-section {
+    padding-block: var(--padd-light);
+  }
+
+  .cmp-hero-section {
+    position: relative;
+    padding-top: 3.25rem;
+  }
+
+  .cmp-page-hero-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 85dvh;
+    padding-top: clamp(4rem, calc(4.5rem - 6vw), 3.5rem);
+
+    @media (width < 25rem) {
+      min-height: 85dvh;
+      font-size: 2.2rem;
+      padding-top: 4.25rem;
+    }
+
+    @media (width > 47.5rem) {
+      min-height: min(100dvh, 62.5rem);
+      padding-top: clamp(4.8rem, calc(4.5rem - 6vw), 3.25rem);
+    }
+  }
+
+  .cmp-hero-section__image {
+    position: absolute;
+    top: clamp(10.5rem, 10vw + 7rem, 14.75rem);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: url("/assets/images/bueni-20.avif");
+    background-size: cover;
+    background-position: 40%;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 24, 65, 0.35);
+    z-index: -1;
+  }
+
+  .cmp-hero-heading {
+    position: relative;
+    color: var(--clr-hero-heading);
+    font-size: var(--fs-hero-heading);
+    font-weight: 500;
+
+    @media (width < 26.25rem) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .cmp-hero-heading-span {
+    position: relative;
+    display: block;
+    margin-top: 1rem;
+    color: var(--clr-hero-heading-white);
+    z-index: 99;
+  }
+
   .cmp-main-image-text {
     display: inline;
     color: var(--clr-text-images);
@@ -319,35 +351,6 @@
       max-width: 56%;
       align-self: end;
     }
-  }
-
-  .cmp-light-section {
-    padding-block: var(--padd-light);
-  }
-
-  .cmp-hero-section {
-    position: relative;
-    padding-top: 3.25rem;
-  }
-
-  .cmp-hero-section__image {
-    position: absolute;
-    top: clamp(10.2rem, 7vw + 7.5rem, 13.5rem);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background: url("/assets/images/bueni-20.avif");
-    background-size: cover;
-    background-position: 40%;
-    background-blend-mode: overlay;
-    background-color: rgba(10, 24, 65, 0.35);
-    z-index: -1;
-  }
-
-  .cmp-hero-heading-span {
-    display: block;
-    color: var(--clr-hero-heading-white);
   }
 
   .cmp-light-section--no-bottom {
@@ -601,8 +604,6 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\      *** HERO-SECTION ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  
-
   .hero-flex__inner-flex {
     display: flex;
     flex-direction: column;
@@ -647,6 +648,10 @@
     max-width: calc(75.25rem + 2rem);
   }
 
+  .wrapper--narrow-m {
+    max-width: calc(82.25rem + 2rem);
+  }
+
   .wrapper--wide {
     max-width: calc(90rem + 2rem);
   }
@@ -676,8 +681,8 @@
   }
 
   .wrapper--mobile-xs {
-    @media (width < 43.75rem) {
-      max-width: calc(30rem + 2rem);
+    @media (width < 47.5rem) {
+      max-width: calc(26rem + 2rem);
     }
   }
 
