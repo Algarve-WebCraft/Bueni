@@ -72,7 +72,7 @@ function gsapOpeningHomeAnimations() {
 
   heroHeading.classList.remove("transition-fade");
 
-  return;
+  /* return; */
   window.addEventListener("load", () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "auto" });
@@ -155,7 +155,7 @@ function resetHomeLoadedClass() {
 function gsapScrollAnimations() {
   gsap.registerPlugin(ScrollTrigger);
 
-  return;
+  /* return; */
 
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   /* ScrollTrigger.defaults({ markers: true });  */

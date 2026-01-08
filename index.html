@@ -12,11 +12,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" media="(prefers-color-scheme: dark)">
     <script>
       (function () {
-        let theme = localStorage.getItem("theme");
-        if (!theme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          theme = "dark";
-        }
-        if (theme === "dark") {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          !storedTheme &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (storedTheme === "dark" || prefersDark) {
           document.documentElement.classList.add("dark-mode");
         }
       })();

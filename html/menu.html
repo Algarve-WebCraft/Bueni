@@ -12,11 +12,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" media="(prefers-color-scheme: dark)">
     <script>
       (function () {
-        let theme = localStorage.getItem("theme");
-        if (!theme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          theme = "dark";
-        }
-        if (theme === "dark") {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          !storedTheme &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (storedTheme === "dark" || prefersDark) {
           document.documentElement.classList.add("dark-mode");
         }
       })();
@@ -489,7 +491,7 @@
                     <p class="cmp-main-text">Description text goes here describing each item from the Starters to the Mains to the desserts and finally to the drinks. Text can be as long as is needed.</p>
                   </div>
                 </div>
-                
+
                 <div class="menu-items__selection" data-animate="slide-right">
                   <img src="/assets/images/bueni-test-6.png" alt="">
                   <div class="menu-items__selection__text-container">
@@ -499,7 +501,7 @@
                     </div>
                     <p class="cmp-main-text">Description text goes here describing each item from the Starters to the Mains to the desserts and finally to the drinks. Text can be as long as is needed.</p>
                   </div>
-                  
+
                 </div>
                 <div class="menu-items__selection" data-animate="slide-left">
                   <img src="/assets/images/bueni-test-7.png" alt="">
