@@ -23,6 +23,16 @@
         }
       })();
     </script>
+    <script>
+      const repoName = "/algarve-webcraft/"; // replace with your repo name
+      const links = document.querySelectorAll("[data-src], link[rel=stylesheet], script[src]");
+      links.forEach(el => {
+        const attr = el.dataset.src ? "data-src" : el.src ? "src" : "href";
+        if (el[attr] && el[attr].startsWith("/")) {
+          el[attr] = repoName + el[attr].substring(1);
+        }
+      });
+    </script>
     <link rel="icon" type="image/x-icon" href="../assets/logos/favicon-logo.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/logos/favicon-logo-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-logo-32x32.png">
