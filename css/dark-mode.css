@@ -1,42 +1,88 @@
 :root {
-  --clr-dark-theme-100: #60a5fa;
-  --clr-dark-theme-200: #3b82c4;
-  --clr-dark-theme-300: #1e5abf;
-  --clr-dark-theme-400: #111827;
-  --clr-white-100: #fff;
-  --clr-white-200: #f4f6fc;
-  --clr-white-300: #e5e7eb;
+  --dark-blue-100: #60a5fa;
+  --dark-blue-200: #3b82c4;
+  --dark-blue-300: #1e5abf;
+  --dark-blue-400: #0b1f33;
+  --dark-blue-500: #111827;
+
+  --white-100: #fff;
+  --white-200: #f4f6fc;
+  --white-300: #e5e7eb;
+
+  --dark-clr-background: var(--dark-blue-500);
+  --dark-clr-text: var(--white-300);
+  --dark-clr-hero-headings: var(--white-100);
+  --dark-clr-main-headings: var(--white-200);
+}
+
+html.dark-mode .hamburger-btn-box {
+  fill: var(--white-300);
+}
+
+html.dark-mode .cmp-hero-section__image,
+html.dark-mode .contact-image {
+  background-color: rgba(8, 20, 52, 0.4);
+}
+
+html.dark-mode .cmp-main-image-text {
+  background: linear-gradient(to bottom, #0b1f33fc, #0b1f33d6);
+}
+
+html.dark-mode .cmp-light-section,
+html.dark-mode .transition-hero-shutter::after {
+  background: var(--dark-blue-500);
+}
+
+html.dark-mode .cmp-dark-section {
+  background: var(--dark-blue-400);
+}
+
+html.dark-mode .cmp-dark-mode-section {
+  background: var(--dark-blue-400);
+}
+
+html.dark-mode .cmp-hero-heading,
+html.dark-mode .cmp-hero-heading-span {
+  color: var(--dark-clr-hero-headings);
+}
+
+html.dark-mode .cmp-main-heading,
+html.dark-mode .cmp-micro-heading {
+  color: var(--dark-clr-main-headings);
 }
 
 html.dark-mode .cmp-main-btn {
-  background-color: var(--clr-dark-theme-50);
+  background-color: var(--dark-blue-400);
 }
 
-html.dark-mode .header__container {
-  box-shadow: 0 3px 25px var(--clr-dark-theme-300);
+html.dark-mode .cmp-secondary-btn {
+  background-color: #12395a;
 }
 
 html.dark-mode .hamburger-svg {
   fill: var(--clr-white-300);
 }
 
-html.dark-mode #footer {
-  background-color: var(--clr-dark-theme-300);
-}
-
 html.dark-mode body,
 html.dark-mode .header__container,
-html.dark-mode .nav-bar {
-  background-color: var(--clr-dark-theme-400);
+html.dark-mode .nav-bar,
+html.dark-mode .footer-section {
+  background-color: var(--dark-blue-500);
 }
 
-html.dark-mode p,
+html.dark-mode .header__container {
+  box-shadow: 0 -12px 30px var(--dark-blue-300);
+}
+
+html.dark-mode .footer-section {
+  box-shadow: 0 12px 30px var(--dark-blue-300);
+}
+
+html.dark-mode .cmp-main-text,
 html.dark-mode li,
-html.dark-mode h1,
-html.dark-mode h2,
-html.dark-mode h3,
+html.dark-mode span,
 html.dark-mode a {
-  color: var(--bodyTextWhite);
+  color: var(--dark-clr-text);
 }
 
 html.dark-mode .business-logo {

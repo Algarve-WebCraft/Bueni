@@ -39,11 +39,12 @@
     <link rel="stylesheet" href="/css/dark-mode.css">
     <link rel="stylesheet" href="/css/style-main.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="/css/style-pages.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="/css/glightbox.min.css"  media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="/css/glightbox.min.css" media="print" onload="this.media='all'">
     <script src="/js/gsap.min.js" defer></script>
     <script src="/js/scrolltrigger.min.js" defer></script>
     <script src="/js/swup.js" defer></script>
     <script src="/js/masonry.js" defer></script>
+    <script src="/js/masonryimagesloaded.js" defer></script>
     <script src="/js/glightbox.min.js" defer></script>
     <script type="module" src="/js/script.js"></script>
     <noscript>
@@ -128,18 +129,17 @@
 
       <section class="cmp-light-section cmp-hero-section" aria-labelledby="main-hero-heading">
         <div class="wrapper">
-          <div class="cmp-hero-section__image"></div>
+          <div class="cmp-hero-section__image transition-hero-shutter"></div>
 
           <div class="cmp-page-hero-flex">
             <div>
-              <h1 id="main-hero-heading" class="cmp-hero-heading">Rooted in tradition <span class="cmp-hero-heading-span">modern in taste</span></h1>
+              <h1 id="main-hero-heading" class="cmp-hero-heading transition-fade">Rooted in tradition <span class="cmp-hero-heading-span">modern in taste</span></h1>
             </div>
             <div class="hero-flex__inner-flex">
-              <div class="hero-flex__inner__inner-flex">
+              <div class="hero-flex__inner__inner-flex transition-slide-opposite">
                 <a href="/html/contact.html" class="cmp-main-btn">Book a table</a>
                 <a href="/html/menu.html" class="cmp-secondary-btn">Explore the menu</a>
               </div>
-              <p class="cmp-main-text cmp-main-image-text">Thoughtfully prepared dishes made with quality ingredients, balancing classic techniques with a modern approach to flavor.</p>
             </div>
           </div>
 
@@ -150,11 +150,11 @@
       <!--------------------------------------- PAGE 1 / SECTION-ONE / INTRODUCTION ------------------------------------>
       <!---------------------------------------------------------------------------------------------------------------->
 
-      <section class="cmp-light-section" aria-labelledby="intro-heading">
-        <div class="wrapper wrapper--mobile-xs">
+      <section class="cmp-light-section transition-reverse-slide" aria-labelledby="intro-heading">
+        <div class="wrapper wrapper--mobile-s">
 
-          <div class="intro-container">
-            <div class="intro__text-container">
+          <div class="intro-container" data-animate-group data-animate-start="top 45%">
+            <div class="intro__text-container" data-animate="slide-up">
               <h2 id="intro-heading" class="cmp-main-heading">Where innovation meets tradition</h2>
               <p class="cmp-main-text cmp-main-text-margins">At the heart of every dish is a respect for time-honored techniques, paired with a curiosity for new ideas. Our kitchen draws inspiration from the past while embracing fresh influences, bringing together classic foundations and thoughtful creativity. Each plate is crafted with care, resulting in food that feels familiar, refined, and quietly distinctive.</p>
               <div class="intro__text-container__button">
@@ -162,10 +162,12 @@
               </div>
             </div>
 
-            <img src="/assets/images/bueni-8.jpg" alt="foood">
-            <img src="/assets/images/bueni-4.jpg" alt="foood">
-            <img src="/assets/images/bueni-2.jpg" alt="foood">
-            <p class="cmp-main-text">We cook with intention, letting tradition set the pace while modern influences guide the direction. Time-tested methods form the foundation, while contemporary influences add nuance and depth. The result is food that feels familiar yet surprising, crafted to be enjoyed slowly and remembered long after.</p>
+            <div class="intro-image-container">
+              <img src="/assets/images/bueni-3.jpg" alt="foood" data-animate="slide-left">
+              <img src="/assets/images/bueni-4.jpg" alt="foood" data-animate="slide-up">
+              <img src="/assets/images/bueni-2.jpg" alt="foood" data-animate="slide-right">
+            </div>
+            <p class="cmp-main-text" data-animate="slide-up">We cook with intention, letting tradition set the pace while modern influences guide the direction. Time-tested methods form the foundation, while contemporary influences add nuance and depth. The result is food that feels familiar yet surprising, crafted to be enjoyed slowly and remembered long after.</p>
           </div>
 
         </div>
@@ -175,10 +177,10 @@
       <!--------------------------------------- PAGE 1 / SECTION-TWO / MENU ---------------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section class="cmp-dark-section" aria-labelledby="menu-heading">
+      <section class="cmp-dark-section transition-reverse-slide" aria-labelledby="menu-heading">
         <div class="wrapper wrapper--mobile-mini">
 
-          <div class="menu-text-container">
+          <div class="menu-text-container" data-animate="slide-up">
             <h2 id="menu-heading" class="cmp-main-heading-white">Explore our <br> menu</h2>
             <p class="cmp-main-text-white cmp-main-text-margins">Our menu combines fresh, high-quality ingredients with vibrant flavors, creating dishes that delight with every bite</p>
           </div>
@@ -186,7 +188,7 @@
           <div class="menu-grid-container">
             <a href="/html/menu.html#starters">
               <div class="menu-grid__inner">
-                <div>
+                <div class="menu-grid__inner-image" data-animate="shutter-horizontal"> 
                   <img src="/assets/images/bueni-test-4.jpg" alt="Some food.">
                 </div>
                 <div>
@@ -198,7 +200,7 @@
 
             <a href="/html/menu.html#mains">
               <div class="menu-grid__inner">
-                <div>
+                <div class="menu-grid__inner-image" data-animate="shutter-horizontal"> 
                   <img src="/assets/images/bueni-test-5.png" alt="Some food.">
                 </div>
                 <div>
@@ -210,7 +212,7 @@
 
             <a href="/html/menu.html#desserts">
               <div class="menu-grid__inner">
-                <div>
+                <div class="menu-grid__inner-image" data-animate="shutter-horizontal"> 
                   <img src="/assets/images/bueni-test-6.png" alt="Some food.">
                 </div>
                 <div>
@@ -222,7 +224,7 @@
 
             <a href="/html/menu.html#drinks">
               <div class="menu-grid__inner">
-                <div>
+                <div class="menu-grid__inner-image" data-animate="shutter-horizontal"> 
                   <img src="/assets/images/bueni-test-7.png" alt="Some food.">
                 </div>
                 <div>
@@ -240,21 +242,21 @@
       <!--------------------------------------- PAGE 1 / SECTION-THREE / GALLERY ----------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section class="cmp-light-section" aria-labelledby="">
+      <section class="cmp-light-section transition-reverse-slide" aria-labelledby="gallery-heading">
         <div class="wrapper wrapper--mobile-s">
 
           <div class="gallery-section-container">
             <div class="gallery-text-container">
-              <h2 id="menu-heading" class="cmp-main-heading">Catering for every celebration</h2>
-              <p class="cmp-main-text cmp-main-text-margins">Whether you're hosting an intimate dinner or a large celebration, our team brings seasonal flavor and refined service to your table. We offer full-service catering, custom menus, and personalized experiences for events of all kinds — weddings, corporate gatherings, private dinners, and more</p>
+              <h2 id="gallery-heading" class="cmp-main-heading">Moments shared together</h2>
+              <p class="cmp-main-text cmp-main-text-margins">A look inside the space, and the details that shape the food and experience. Our gallery captures the atmosphere of the restaurant and our dishes, as they are meant to be enjoyed, offering a sense of the setting and the moments shared around the table.</p>
               <a class="cmp-secondary-btn" href="/html/gallery.html">Gallery</a>
             </div>
 
-            <div class="gallery-grid-container">
-              <img src="/assets/images/bueni-5.jpg" alt="Some food.">
-              <img src="/assets/images/bueni-3.jpg" alt="Some food.">
-              <img src="/assets/images/bueni-x.jpg" alt="Some food.">
-              <img src="/assets/images/beuni-6.jpg" alt="Some food.">
+            <div class="gallery-grid-container" data-animate-group>
+              <img src="/assets/images/bueni-14.jpg" alt="Some food." data-animate="slide-down">
+              <img src="/assets/images/bueni-10.jpg" alt="Some food." data-animate="slide-right">
+              <img src="/assets/images/bueni-18.jpg" alt="Some food." data-animate="slide-left">
+              <img src="/assets/images/bueni-16.jpg" alt="Some food." data-animate="slide-up">
             </div>
           </div>
 
@@ -265,16 +267,16 @@
       <!--------------------------------------- PAGE 1 / SECTION-FOUR / EXTRA INFO --------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section class="extra-info-section cmp-dark-section" aria-labelledby="extra-heading">
+      <section class="extra-info-section cmp-dark-section transition-reverse-slide" aria-labelledby="extra-heading">
         <div class="wrapper">
 
           <div class="extra-flex-container">
-            <div class="extra-flex__text-container">
+            <div class="extra-flex__text-container" data-animate="slide-left">
               <h2 id="extra-heading" class="cmp-main-heading-white">Catering for any celebration</h2>
-              <p class="cmp-main-text-white cmp-main-text-margins">Whether you're hosting an intimate dinner or a large celebration, our team brings seasonal flavor and refined service to your table. We offer full-service catering, custom menus, and personalized experiences for events of all kinds — weddings, corporate gatherings, private dinners, and more</p>
+              <p class="cmp-main-text-white cmp-main-text-margins">Whether you are planning an intimate gathering or a larger celebration, our restaurant provides a welcoming setting and a thoughtfully crafted experience. With a focus on unique flavours and attentive service, it is a place well suited for a wide range of occasions, from personal milestones to group events and shared celebrations.</p>
             </div>
 
-            <div class="extra-flex__image-container"></div>
+            <div class="extra-flex__image-container" data-animate="scale"></div>
           </div>
 
         </div>
@@ -284,14 +286,14 @@
       <!----------------------------------------- PAGE 1 / SECTION-FIVE / CONTACT ---------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section class="cmp-light-section contact-section contact-section--no-divide" aria-labelledby="contact-heading">
-        <div class="contact-image"></div>
+      <section class="cmp-light-section contact-section contact-section--no-divide transition-reverse-slide" aria-labelledby="contact-heading">
+        <div class="contact-image" data-animate="shutter-horizontal"></div>
         <div class="wrapper wrapper--mobile-m">
 
           <div class="contact-flex-container">
-            <h2 id="contact-heading" class="cmp-main-heading">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
+            <h2 id="contact-heading" class="cmp-main-heading contact-heading" data-animate="slide-left">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
 
-            <div class="contact-flex__text-container">
+            <div class="contact-flex__text-container" data-animate="slide-right">
               <div class="contact-text-container__inner-flex">
                 <h3 class="cmp-micro-heading">Opening hours</h3>
                 <span class="cmp-main-text">Monday: 6AM - 11PM</span>
@@ -326,7 +328,7 @@
     <!------------------------------------------------ FOOTER ---------------------------------------------------->
     <!------------------------------------------------------------------------------------------------------------>
 
-    <footer class="cmp-dark-section footer-section">
+    <footer id="footer" class="cmp-dark-section footer-section transition-reverse-slide">
       <div class="wrapper wrapper--mobile-m">
 
         <div>

@@ -45,6 +45,7 @@
     <script src="../js/scrolltrigger.min.js" defer></script>
     <script src="../js/swup.js" defer></script>
     <script src="../js/masonry.js" defer></script>
+    <script src="../js/masonryimagesloaded.js" defer></script>
     <script src="../js/glightbox.min.js" defer></script>
     <script type="module" src="../js/script.js"></script>
     <noscript>
@@ -61,7 +62,7 @@
 
           <div id="swup-header-container">
             <div class="business-logo-container">
-              <a href="index.html">
+              <a href="../index.html">
                 <img src="/assets/logos/business-logo.webp" class="business-logo" width="200" height="70" fetchpriority="high" decoding="async" loading="eager" alt="Algarve Webcraft's logo.">
               </a>
             </div>
@@ -129,14 +130,11 @@
 
       <section class="cmp-light-section cmp-hero-section" aria-labelledby="gallery-hero-heading">
         <div class="wrapper">
-          <div class="cmp-hero-section__image cmp-hero-section__image--pg4-s1"></div>
+          <div class="cmp-hero-section__image cmp-hero-section__image--pg4-s1 transition-hero-shutter"></div>
 
           <div class="cmp-page-hero-flex">
             <div>
-              <h1 id="gallery-hero-heading" class="cmp-hero-heading">Moments shared<span class="cmp-hero-heading-span">around our table</span></h1>
-            </div>
-            <div class="hero-flex__inner-flex">
-              <p class="cmp-main-text cmp-main-image-text">A glimpse into our restaurant, offering a curated view of the space and the moments that make it memorable.</p>
+              <h1 id="gallery-hero-heading" class="cmp-hero-heading transition-fade">Moments shared<span class="cmp-hero-heading-span">around the table</span></h1>
             </div>
           </div>
 
@@ -147,7 +145,7 @@
       <!--------------------------------------- PAGE 4 / SECTION-TWO / GALLERY ---------------------------------------->
       <!--------------------------------------------------------------------------------------------------------------->
 
-      <section class="cmp-light-section" aria-labelledby="gallery-page-heading">
+      <section class="cmp-light-section cmp-dark-mode-section transition-reverse-slide" aria-labelledby="gallery-page-heading">
         <div class="wrapper wrapper--mobile-m">
 
           <div class="gallery-page-heading-container">
@@ -155,42 +153,61 @@
             <p class="cmp-main-text">A closer look at the craft behind the cuisine. Step inside our world and explore the moments that shape who we are.</p>
           </div>
 
-          <div id="gallery-masonry-container" class="gallery-page-container">
-            <a class="glightbox" href="/assets/images/bueni-3.jpg">
-              <img class="fuck" src="/assets/images/bueni-3.jpg" alt="">
+          <div class="gallery-page-container">
+            <a class="glightbox" href="/assets/images/bueni-19.jpg" data-animate="slide-left">
+              <img src="/assets/images/bueni-19.jpg" alt=""> 
             </a>
-            <a class="glightbox" href="/assets/images/bueni-11.jpg">
-              <img src="/assets/images/bueni-11.jpg" alt="">
+
+            <a class="glightbox" href="/assets/images/bueni-3.jpg" data-animate="slide-down">
+              <img src="/assets/images/bueni-3.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-1.jpg">
-              <img src="/assets/images/bueni-1.jpg" alt="">
+
+            <a class="glightbox" href="/assets/images/bueni-14.jpg" data-animate="slide-right">
+              <img src="/assets/images/bueni-14.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-13.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-13.jpg" data-animate="slide-up">
               <img src="/assets/images/bueni-13.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-4.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-4.jpg" data-animate="slide-left">
               <img src="/assets/images/bueni-4.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-28.jpg">
-              <img src="/assets/images/bueni-28.jpg" alt="">
+
+            <a class="glightbox" href="/assets/images/bueni-16.jpg" data-animate="slide-up">
+              <img src="/assets/images/bueni-16.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-12.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-12.jpg" data-animate="slide-right">
               <img src="/assets/images/bueni-12.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-15.jpg">
-              <img src="/assets/images/bueni-15.jpg" alt="">
+
+            <a class="glightbox" href="/assets/images/bueni-1.jpg" data-animate="slide-left">
+              <img src="/assets/images/bueni-1.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-9.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-9.jpg" data-animate="slide-up">
               <img src="/assets/images/bueni-9.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-17.webp">
+
+            <a class="glightbox" href="/assets/images/bueni-17.webp" data-animate="slide-right">
               <img src="/assets/images/bueni-17.webp" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-18.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-18.jpg" data-animate="slide-left">
               <img src="/assets/images/bueni-18.jpg" alt="">
             </a>
-            <a class="glightbox" href="/assets/images/bueni-2.jpg">
+
+            <a class="glightbox" href="/assets/images/bueni-15.jpg" data-animate="slide-up">
+              <img src="/assets/images/bueni-15.jpg" alt="">
+            </a>
+
+            <a class="glightbox" href="/assets/images/bueni-2.jpg" data-animate="slide-right">
               <img src="/assets/images/bueni-2.jpg" alt="">
+            </a>
+
+            <a class="glightbox" href="/assets/images/bueni-11.jpg" data-animate="slide-left">
+              <img src="/assets/images/bueni-11.jpg" alt="">
             </a>
           </div>
         </div>
@@ -200,14 +217,14 @@
       <!----------------------------------------- PAGE 4 / SECTION-THREE / CONTACT ---------------------------------->
       <!------------------------------------------------------------------------------------------------------------->
 
-      <section class="cmp-light-section contact-section" aria-labelledby="contact-page-4-heading">
-        <div class="contact-image"></div>
+      <section class="cmp-light-section contact-section cmp- transition-reverse-slide" aria-labelledby="contact-page-4-heading">
+        <div class="contact-image" data-animate="shutter-horizontal"></div>
         <div class="wrapper wrapper--mobile-m">
 
           <div class="contact-flex-container">
-            <h2 id="contact-page-4-heading" class="cmp-main-heading">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
+            <h2 id="contact-page-4-heading" class="cmp-main-heading" data-animate="slide-left">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
 
-            <div class="contact-flex__text-container">
+            <div class="contact-flex__text-container" data-animate="slide-right">
               <div class="contact-text-container__inner-flex">
                 <h3 class="cmp-micro-heading">Opening hours</h3>
                 <span class="cmp-main-text">Monday: 6AM - 11PM</span>
@@ -242,7 +259,7 @@
     <!------------------------------------------------ FOOTER ---------------------------------------------------->
     <!------------------------------------------------------------------------------------------------------------>
 
-    <footer class="cmp-dark-section footer-section">
+    <footer id="footer" class="cmp-dark-section footer-section transition-reverse-slide">
       <div class="wrapper wrapper--mobile-m">
 
         <div>

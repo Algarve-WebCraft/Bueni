@@ -2,54 +2,77 @@
 
 ////// Load all functions in as the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  menuChangeCategory();
-  homepageMenuJump();
-  menuMobileSwipe();
-  setGalleryMasonryAndGlightbox();
+  runSwupHooks();
   activateHamburgerMenu();
   updateActiveNavLink();
   resetHomeLoadedClass();
   darkMode();
+  menuChangeCategory();
+  menuMobileSwipe();
+  setGalleryMasonryAndGlightbox();
   stopTransitionOnResize();
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   gsapOpeningHomeAnimations();
-  gsapScrollAnimations();
+
+  // Ensure Scroll Triggers wait until everything has fully loaded in.
+  window.addEventListener("load", () => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        gsapScrollAnimations();
+        ScrollTrigger.refresh();
+      });
+    });
+  });
+
+  /* document.documentElement.classList.add("has-smooth-scroll"); */
 });
 
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  containers: ["#swup", "#swup-header-container", "#gallery-masonry-container", "#footer"],
+  containers: ["#swup", "#swup-header-container", "#footer"],
 });
 
-swup.hooks.on("page:view", () => {
-  activateHamburgerMenu();
-  updateActiveNavLink();
-  setGalleryMasonryAndGlightbox();
+function runSwupHooks() {
+  swup.hooks.on("page:view", () => {
+    activateHamburgerMenu();
+    updateActiveNavLink();
+    menuChangeCategory();
+    homepageMenuJump();
+    setGalleryMasonryAndGlightbox();
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  setTimeout(() => ScrollTrigger.refresh(true), 300);
+    setTimeout(() => ScrollTrigger.refresh(true), 300);
 
-  setTimeout(() => {
-    gsapScrollAnimations();
-  }, 1000);
-});
+    setTimeout(() => {
+      gsapScrollAnimations();
+    }, 1000);
+  });
+
+  // Prevents the browser from smooth scrolling when changing pages, only happens when still on the same page.
+  swup.hooks.on("visit:start", () => {
+    document.documentElement.classList.remove("has-smooth-scroll");
+  });
+
+  swup.hooks.on("visit:end", () => {
+    document.documentElement.classList.add("has-smooth-scroll");
+  });
+}
 
 /////////////////////////////////////////////////////////////* Opening hero intro animations *///////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  const isMobile = window.matchMedia("(max-width: 62.5rem)");
   const body = document.body;
+  const heroHeading = document.querySelector(".cmp-hero-heading");
+
+  if (!document.body.classList.contains("home")) return;
+
+  heroHeading.classList.remove("transition-fade");
 
   return;
-  const tl = gsap.timeline({
-    defaults: { ease: "power3.out" },
-    delay: 0.3,
-  });
-
   window.addEventListener("load", () => {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "auto" });
@@ -60,74 +83,63 @@ function gsapOpeningHomeAnimations() {
     document.documentElement.style.overflow = "hidden";
   }
 
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.out" },
+    delay: 0.2,
+  });
+
   tl.fromTo(
-    "#pg1-hero",
+    ".cmp-hero-section__image",
     {
-      opacity: 0,
-      rotateX: 30,
-      rotateY: -100,
-      scale: 6,
-      transformOrigin: "center center",
+      clipPath: "inset(0 0 100% 0)",
+      transform: "translateY(30px) scale(1.2)",
     },
     {
-      opacity: 1,
-      rotateY: 0,
-      rotateX: 0,
-      scale: 1,
-      duration: 3,
-      ease: "power3.out",
+      clipPath: "inset(0 0 0% 0)",
+      duration: 1.2,
+      ease: "power3.inOut",
     }
-  );
-  tl.from(
-    "#hero-heading",
-    {
-      x: -230,
-      opacity: 0,
-      duration: 1.25,
-    },
-    "+=0.75"
   )
+    .to(
+      ".cmp-hero-section__image",
+      {
+        y: 0,
+        scale: 1,
+        duration: 1.2,
+        ease: "power3.inOut",
+      },
+      0
+    )
     .from(
-      ".hero__image-main",
+      ".cmp-hero-heading",
       {
         opacity: 0,
-        scale: 0.1,
-        duration: 0.1,
+        x: -150,
+        duration: 1.5,
         onComplete() {
-          const images = document.querySelectorAll(".hero__image-main");
-
-          images.forEach((image) => {
-            image.classList.add("slide-in-elliptic");
-            gsap.set(".hero__image-main", { clearProps: "all" });
-          });
+          heroHeading.classList.add("transition-fade");
+          document.documentElement.style.overflow = "auto";
         },
       },
-      "-=1.5"
+      "+=0.2"
     )
-    .from(".hero-text", { x: 230, opacity: 0, duration: 1.25 }, "-=0.8")
     .from(
-      ".cmp-topper-heading--pg1-hero",
-      { opacity: 0, duration: 2.5 },
-      "-=0.4"
-    )
-    .from(".cmp-main-btn--pg1-hero", { opacity: 0, duration: 2.5 }, "-=2")
-    .from(
-      ".home-header",
-      { x: -1600, opacity: 0, duration: 3 },
-      `${isMobile.matches ? "-=5.5" : "-=4.4"}`
-    )
-    .to(
-      {},
+      ".header",
       {
-        duration: 1,
-        onComplete() {
-          document.documentElement.style.overflow = "";
-          document.body.classList.remove("loading");
-          document.body.classList.add("loaded");
-          gsap.set("#pg1-hero", { clearProps: "all" });
-        },
+        y: -30,
+        opacity: 0,
+        duration: 2,
       },
-      "-=5" /* Remove the hidden overflow a few seconds before the end of the animations so the user can scroll again */
+      "-=1"
+    )
+    .from(
+      ".hero-flex__inner-flex",
+      {
+        opacity: 0,
+        y: 100,
+        duration: 2,
+      },
+      "-=1.75"
     );
 }
 
@@ -143,78 +155,137 @@ function resetHomeLoadedClass() {
 function gsapScrollAnimations() {
   gsap.registerPlugin(ScrollTrigger);
 
+  return;
+
   ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  /* ScrollTrigger.defaults({ markers: true }); */ // Enable markers to show where the scroller starts and ends while planning
+  /* ScrollTrigger.defaults({ markers: true });  */
 
-  const animatedElements = document.querySelectorAll("[data-animate]");
-
-  /* Add 'data-animate' to the elements you want to animate from the list below ie. data-animate="slide-up". */
-  /* Add 'data-reversible' to the elements you want to reverse the animation when scrolling back up. */
-  /* Add 'data-no-scrub' so the elements will pop in as soon as the trigger is hit, instead of slowly scrubbing in. */
+  const animatedElements = document.querySelectorAll(
+    "[data-animate]:not([data-animate-group] [data-animate])"
+  );
 
   animatedElements.forEach((el) => {
     const animationType = el.dataset.animate;
-    const isReversible = el.hasAttribute("data-reversible");
-    const noScrub = el.hasAttribute("data-no-scrub");
-    let animProps = { opacity: 0, duration: 1, ease: "power4.out" };
+    let animationStyles = { opacity: 0, duration: 1, ease: "power4.out" };
 
     switch (animationType) {
       case "slide-up":
-        animProps = { ...animProps, y: 150 };
+        animationStyles = { ...animationStyles, y: 150 };
         break;
       case "slide-down":
-        animProps = { ...animProps, y: -150 };
+        animationStyles = { ...animationStyles, y: -150 };
         break;
       case "slide-left":
-        animProps = { ...animProps, x: -150 };
+        animationStyles = { ...animationStyles, x: -150 };
         break;
       case "slide-right":
-        animProps = { ...animProps, x: 150 };
+        animationStyles = { ...animationStyles, x: 150 };
         break;
-      case "slide-up-fast":
-        animProps = { ...animProps, y: 150, duration: 0.2 };
-        break;
-      case "slide-down-fast":
-        animProps = { ...animProps, y: -150, duration: 0.2 };
-        break;
-      case "slide-left-fast":
-        animProps = { ...animProps, x: -150, duration: 0.2 };
-        break;
-      case "slide-right-fast":
-        animProps = { ...animProps, x: 150, duration: 0.2 };
-        break;
+      case "scale":
+        gsap.from(el, {
+          scale: 2,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          clearProps: "transform, opacity",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 0%",
+          },
+        });
+        return;
+      case "shutter-horizontal":
+        gsap.fromTo(
+          el,
+          { clipPath: "inset(0 50% 0 50%)" },
+          {
+            clipPath: "inset(0 0% 0 0%)",
+            duration: 1.25,
+            ease: "power3.out",
+            clearProps: "transform, opacity",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 65%",
+            },
+          }
+        );
+        return;
       case "fade-in":
       default:
-        animProps = { ...animProps, duration: 1 };
+        animationStyles = { ...animationStyles, duration: 1 };
         break;
     }
 
     gsap.from(el, {
-      ...animProps,
+      ...animationStyles,
+      clearProps: "transform, opacity",
       scrollTrigger: {
         trigger: el,
-        start: "top 58%",
-
-        end: "top 45%",
-        scrub: noScrub ? false : 5,
-        once: isReversible ? false : true,
-        toggleActions: isReversible
-          ? "play none none reverse"
-          : "play none none none",
+        start: "top 60%",
       },
     });
   });
 
-  ScrollTrigger.refresh(true);
+  //// Group scroll animations (multiple elements controlled by a single trigger).
+  document.querySelectorAll("[data-animate-group]").forEach((group) => {
+    const triggerStartPoint = group.dataset.animateStart || "top 40%";
+
+    group.querySelectorAll("[data-animate]").forEach((el) => {
+      const animationType = el.dataset.animate;
+      let animationStyles = { opacity: 0, ease: "power4.out" };
+
+      switch (animationType) {
+        case "slide-left":
+          animationStyles.x = -120;
+          break;
+        case "slide-right":
+          animationStyles.x = 120;
+          break;
+        case "slide-up":
+          animationStyles.y = 120;
+          break;
+        case "slide-down":
+          animationStyles.y = -120;
+          break;
+      }
+
+      gsap.set(el, animationStyles);
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: group,
+        start: triggerStartPoint,
+        once: true,
+      },
+    });
+
+    group.querySelectorAll("[data-animate]").forEach((el) => {
+      tl.to(
+        el,
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          ease: "power4.out",
+          duration: 1,
+          clearProps: "transform, opacity",
+        },
+        0
+      );
+    });
+  });
 }
 
 /////////////////////////////////////////////////////////////////* Menu section change menu *//////////////////////////////////////////////////////////////////////////*
 
-const menuButtons = document.querySelectorAll(".menu-headings__inner button");
-const menuWrapper = document.querySelector(".menu-items-container");
-const activeMenu = document.querySelector(".menu-items__inner.menu-is-active");
-
 function menuChangeCategory() {
+  const menuButtons = document.querySelectorAll(".menu-headings__inner button");
+  const menuWrapper = document.querySelector(".menu-items-container");
+  const activeMenu = document.querySelector(
+    ".menu-items__inner.menu-is-active"
+  );
+
   function updateMenuHeight(selectedMenu) {
     menuWrapper.style.height = selectedMenu.scrollHeight + "px";
   }
@@ -267,11 +338,21 @@ function menuChangeCategory() {
   });
 }
 
-//// Jump to correct menu section from homepage
+//// Jump to correct menu section from homepage.
 
 function homepageMenuJump() {
+  const menuWrapper = document.querySelector(".menu-items-container");
+  const menuScrollSection = document.querySelector(".menu-scroll-start-point");
   const windowHash = window.location.hash.replace("#", "");
+
   if (!windowHash) return;
+
+  // Prevent menu items from popping in and out due to scrolltriggers when coming from the homepage.
+  menuWrapper.style.opacity = "0";
+
+  setTimeout(() => {
+    menuWrapper.style.opacity = "1";
+  }, 1200);
 
   const targetButton = document.querySelector(
     `.menu-headings__inner button[data-menu="${windowHash}"]`
@@ -296,6 +377,15 @@ function homepageMenuJump() {
   targetButton.classList.add("menu-is-active");
   targetButton.setAttribute("aria-selected", "true");
 
+  if (menuWrapper && targetMenu) {
+    menuWrapper.style.height = targetMenu.scrollHeight + "px";
+  }
+
+  menuScrollSection?.scrollIntoView({
+    behavior: "auto",
+    block: "start",
+  });
+
   // Prevent focus-outline from appearing on menu change
   window.addEventListener("load", () => {
     if (window.location.hash) {
@@ -304,12 +394,13 @@ function homepageMenuJump() {
   });
 }
 
-///// Mobile swipe functionality
+///// Mobile swipe functionality.
 
 function menuMobileSwipe() {
+  const menuWrapper = document.querySelector(".menu-items-container");
+  const swipeThreshold = 50;
   let touchStartX = 0;
   let touchEndX = 0;
-  const swipeThreshold = 50;
 
   menuWrapper?.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
@@ -356,6 +447,10 @@ function setGalleryMasonryAndGlightbox() {
     columnWidth: "a",
     percentPosition: true,
     fitWidth: true,
+  });
+
+  imagesLoaded(galleryPage, () => {
+    msnry.layout();
   });
 
   function getGalleryGutter() {
@@ -487,30 +582,39 @@ function updateActiveNavLink() {
 
 function darkMode() {
   const darkModeButton = document.getElementById("dark-mode-toggle");
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function applyDarkMode() {
+    document.documentElement.classList.add("dark-mode");
+  }
+
+  function applyLightMode() {
+    document.documentElement.classList.remove("dark-mode");
+  }
 
   function enableDarkMode() {
-    document.documentElement.classList.add("dark-mode");
+    applyDarkMode();
     localStorage.setItem("theme", "dark");
   }
 
   function disableDarkMode() {
-    document.documentElement.classList.remove("dark-mode");
+    applyLightMode();
     localStorage.setItem("theme", "light");
   }
 
   function detectColorScheme() {
-    let theme = "light";
+    const storedTheme = localStorage.getItem("theme");
 
-    if (localStorage.getItem("theme")) {
-      theme = localStorage.getItem("theme");
-    } else if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      theme = "dark";
+    if (storedTheme) {
+      storedTheme === "dark" ? applyDarkMode() : applyLightMode();
+      return;
     }
 
-    theme === "dark" ? enableDarkMode() : disableDarkMode();
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    prefersDark ? applyDarkMode() : applyLightMode();
   }
 
   detectColorScheme();
@@ -518,6 +622,12 @@ function darkMode() {
   function switchTheme(newTheme) {
     newTheme === "dark" ? enableDarkMode() : disableDarkMode();
   }
+
+  mediaQuery.addEventListener("change", (e) => {
+    if (!localStorage.getItem("theme")) {
+      e.matches ? applyDarkMode() : applyLightMode();
+    }
+  });
 
   darkModeButton.addEventListener("click", () => {
     const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";

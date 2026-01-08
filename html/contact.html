@@ -45,6 +45,7 @@
     <script src="../js/scrolltrigger.min.js" defer></script>
     <script src="../js/swup.js" defer></script>
     <script src="../js/masonry.js" defer></script>
+    <script src="../js/masonryimagesloaded.js" defer></script>
     <script src="../js/glightbox.min.js" defer></script>
     <script type="module" src="../js/script.js"></script>
     <noscript>
@@ -61,7 +62,7 @@
 
           <div id="swup-header-container">
             <div class="business-logo-container">
-              <a href="index.html">
+              <a href="../index.html">
                 <img src="/assets/logos/business-logo.webp" class="business-logo" width="200" height="70" fetchpriority="high" decoding="async" loading="eager" alt="Algarve Webcraft's logo.">
               </a>
             </div>
@@ -128,13 +129,13 @@
       <!------------------------------------------------------------------------------------------------------------->
 
       <section class="cmp-light-section cmp-light-section--pg5-s1" aria-labelledby="contact-page-5-heading">
-        <div class="contact-image contact-image--pg5-s1"></div>
+        <div class="contact-image contact-image--pg5-s1 transition-hero-shutter"></div>
         <div class="wrapper wrapper--mobile-m wrapper--tablet-xl">
 
           <div class="contact-flex-container contact-flex-container--pg5-s1">
-            <h2 id="contact-page-5-heading" class="cmp-hero-heading">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
+            <h2 id="contact-page-5-heading" class="cmp-hero-heading transition-fade">We're here to<span class="cmp-hero-heading-span">welcome you</span></h2>
 
-            <div class="contact-flex__text-container contact-flex__text-container--pg5-s1">
+            <div class="contact-flex__text-container contact-flex__text-container--pg5-s1 transition-reverse-slide">
               <div class="contact-text-container__inner-flex contact-text-container__inner-flex--pg5-s1">
                 <h3 class="cmp-micro-heading">Opening hours</h3>
                 <span class="cmp-main-text">Monday: 6AM - 11PM</span>
@@ -169,7 +170,7 @@
     <!------------------------------------------------ FOOTER ---------------------------------------------------->
     <!------------------------------------------------------------------------------------------------------------>
 
-    <footer class="cmp-dark-section footer-section">
+    <footer id="footer" class="cmp-dark-section footer-section transition-reverse-slide">
       <div class="wrapper wrapper--mobile-m">
 
         <div>
