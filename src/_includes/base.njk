@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="">
+    <meta name="theme-color" content="#f0f0f0" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" media="(prefers-color-scheme: light)">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" media="(prefers-color-scheme: dark)">
+    <script>
+      (function () {
+        const storedTheme = localStorage.getItem("theme");
+        const prefersDark =
+          !storedTheme &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (storedTheme === "dark" || prefersDark) {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/x-icon" href="/assets/logos/favicon-logo.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/logos/favicon-logo-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/logos/favicon-logo-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/logos/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/logos/android-chrome-192x192.png">
+    <link rel="manifest" href="/assets/logos/site.webmanifest">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/im-fell-english-v14-latin-regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/inter-v20-latin-300.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/inter-v20-latin-regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/inter-v20-latin-500.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/inter-v20-latin-600.woff2">
+    <link rel="preload" as="image" type="image/webp" href="/assets/logos/business-logo.webp">
+    <link rel="preload" href="/css/critical.css" as="style">
+    <link rel="stylesheet" href="/css/critical.css">
+    <link rel="preload" href="/css/dark-mode.css" as="style">
+    <link rel="stylesheet" href="/css/dark-mode.css">
+    <link rel="preload" href="/css/style-main.css" as="style">
+    <link rel="stylesheet" href="/css/style-main.css">
+    <link rel="preload" href="/css/style-pages.css" as="style">
+    <link rel="stylesheet" href="/css/style-pages.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css" media="print" onload="this.media='all'">
+    <script src="/js/gsap.min.js" defer></script>
+    <script src="/js/scrolltrigger.min.js" defer></script>
+    <script src="/js/masonry.js" defer></script>
+    <script src="/js/masonryimagesloaded.js" defer></script>
+    <script src="/js/glightbox.min.js" defer></script>
+    <script type="module" src="/js/bundle.js"></script>
+    <noscript>
+      <link rel="stylesheet" href="/css/style.css">
+    </noscript>
+    <title></title>
+  </head>
+  <body class="{{ bodyClass }}">
+    {% include "header.njk" %}
+
+    <main id="swup">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% include "footer.njk" %}
+  </body>
+</html>

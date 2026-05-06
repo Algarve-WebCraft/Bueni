@@ -1,0 +1,35 @@
+{
+  "name": "bueni",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Algarve-WebCraft/Bueni.git"
+  },
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "crdeps": "npm i swup @swup/head-plugin nunjucks && npm i @11ty/eleventy concurrently esbuild --save-dev",
+    "cleandeps": "rm -rf node_modules package-lock.json",
+    "eldev": "sleep 1 && eleventy --serve",
+    "elprod": "eleventy",
+    "esbstart": "esbuild src/js/script.js --bundle --outfile=public/js/bundle.js --sourcemap",
+    "esbdev": "esbuild src/js/script.js --bundle --outfile=public/js/bundle.js --watch --sourcemap",
+    "esbprod": "esbuild src/js/script.js --bundle --outfile=public/js/bundle.js --minify",
+    "esbadmincms": "esbuild src/js/admin.js --bundle --outfile=public/js/admin-bundle.js --minify",
+    "endprod": "npm run esbprod && npm run elprod",
+    "endprodcms": "npm run esbprod && npm run esbadmincms && npm run elprod",
+    "start": "concurrently \"npm:esbdev\" \"npm:eldev\""
+  },
+  "dependencies": {
+    "@swup/head-plugin": "^2.3.1",
+    "nunjucks": "^3.2.4",
+    "swup": "^4.8.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.27.2"
+  }
+}

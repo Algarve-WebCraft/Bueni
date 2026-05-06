@@ -1,0 +1,186 @@
+{
+  "starters": [
+    {
+      "name": "Bruschetta",
+      "price": "€10.95",
+      "description": "Toasted bread with tomatoes, garlic and basil",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Bruschetta",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Caprese Salad",
+      "price": "€11.50",
+      "description": "Fresh mozzarella with tomatoes and basil",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Caprese Salad",
+      "animate": "slide-right"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Pasta Carbonara",
+      "price": "€15.95",
+      "description": "Classic Roman pasta with pancetta and egg",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Pasta Carbonara",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Marghscdserita",
+      "price": "€13.50",
+      "description": "Tomato, mozzarella, fresh basil",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Margherita",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Pasta Carbonara",
+      "price": "€15.95",
+      "description": "Classic Roman pasta with pancetta and egg",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Pasta Carbonara",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Marghcccerita",
+      "price": "€13.50",
+      "description": "Tomato, mozzarella, fresh basil",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Margherita",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Pasta Carbonara",
+      "price": "€15.95",
+      "description": "Classic Roman pasta with pancetta and egg",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Pasta Carbonara",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Marghsfescerita",
+      "price": "€13.50",
+      "description": "Tomato, mozzarella, fresh basil",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Margherita",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Pasta Carbonara",
+      "price": "€15.95",
+      "description": "Classic Roman pasta with pancetta and egg",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Pasta Carbonara",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Margherfffita",
+      "price": "€13.50",
+      "description": "Tomato, mozzarella, fresh basil",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Margherita",
+      "animate": "slide-right"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Tiramisu",
+      "price": "€7.50",
+      "description": "Classic Italian dessert",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Tiramisu",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Panna Cotta",
+      "price": "€6.95",
+      "description": "Creamy dessert with berry coulis",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Panna Cotta",
+      "animate": "slide-right"
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Red Wine",
+      "price": "€5.50",
+      "description": "Glass of house red wine",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Red Wine",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Lemonade",
+      "price": "€3.95",
+      "description": "Fresh lemonade",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Lemonade",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Red Wine",
+      "price": "€5.50",
+      "description": "Glass of house red wine",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Red Wine",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Lemonade",
+      "price": "€3.95",
+      "description": "Fresh lemonade",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Lemonade",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Red Wine",
+      "price": "€5.50",
+      "description": "Glass of house red wine",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Red Wine",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Lemonade",
+      "price": "€3.95",
+      "description": "Fresh lemonade",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Lemonade",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Red Wine",
+      "price": "€5.50",
+      "description": "Glass of house red wine",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Red Wine",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Lemonade",
+      "price": "€3.95",
+      "description": "Fresh lemonade",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Lemonade",
+      "animate": "slide-right"
+    },
+    {
+      "name": "Red Wine",
+      "price": "€5.50",
+      "description": "Glass of house red wine",
+      "image": "/assets/images/bueni-test-4.jpg",
+      "alt": "Red Wine",
+      "animate": "slide-left"
+    },
+    {
+      "name": "Lemonade",
+      "price": "€3.95",
+      "description": "Fresh lemonade",
+      "image": "/assets/images/bueni-test-5.png",
+      "alt": "Lemonade",
+      "animate": "slide-right"
+    }
+  ]
+}
