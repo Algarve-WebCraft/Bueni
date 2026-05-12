@@ -387,7 +387,6 @@
   .contact-section {
     position: relative;
     text-align: center;
-    background-color: #f6f5f2;
 
     &::before {
       content: "";
@@ -431,13 +430,13 @@
     background: url("/assets/images/bueni-21.jpg");
     background-size: cover;
     background-position: 100%;
-    width: 130%;
+    background-blend-mode: overlay;
+    background-color: rgba(10, 24, 65, 0.3);
+    width: 200%;
     height: auto;
     aspect-ratio: 1.35 / 1;
     max-height: 15rem;
     top: clamp(8.25rem, 8vw + 4rem, 10.5rem);
-    background-blend-mode: overlay;
-    background-color: rgba(10, 24, 65, 0.3);
 
     @media (width > 31.25rem) {
       width: 100%;
