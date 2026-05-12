@@ -431,7 +431,7 @@
     background: url("/assets/images/bueni-21.jpg");
     background-size: cover;
     background-position: 100%;
-    width: 100%;
+    width: 130%;
     height: auto;
     aspect-ratio: 1.35 / 1;
     max-height: 15rem;
@@ -440,6 +440,7 @@
     background-color: rgba(10, 24, 65, 0.3);
 
     @media (width > 31.25rem) {
+      width: 100%;
       max-width: 95%;
       border-radius: 1rem;
       left: -1rem;
