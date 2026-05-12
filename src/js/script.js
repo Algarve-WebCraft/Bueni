@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   });
 
-  /* document.documentElement.classList.add("has-smooth-scroll"); */
+  document.documentElement.classList.add("has-smooth-scroll"); 
 });
 
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*

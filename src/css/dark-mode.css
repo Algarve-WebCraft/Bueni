@@ -17,9 +17,17 @@
 
 html.dark-mode body,
 html.dark-mode .header__container,
-html.dark-mode .nav-bar,
 html.dark-mode .footer-section {
-  background-color: var(--dark-blue-500) !important;
+  background-color: var(--dark-blue-500);
+}
+
+html.dark-mode .nav-bar {
+  background: linear-gradient(
+    180deg,
+    rgba(17, 24, 39, 0.96) 0%,
+    rgba(22, 32, 50, 0.93) 45%,
+    rgba(28, 41, 65, 0.9) 100%
+  );
 }
 
 html.dark-mode .header__container {
