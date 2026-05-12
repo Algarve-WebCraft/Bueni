@@ -412,7 +412,7 @@
     font-size: 1rem;
     font-family: var(--ff-text);
     font-weight: 400;
-    background: #fff;
+    background-color: #fff;
     color: var(--clr-text);
     overflow-x: clip;
   }

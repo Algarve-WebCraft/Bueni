@@ -18,7 +18,7 @@
 html.dark-mode body,
 html.dark-mode .header__container,
 html.dark-mode .footer-section {
-  background: var(--dark-blue-500);
+  background-color: var(--dark-blue-500) !important;
 }
 
 html.dark-mode .nav-bar {
