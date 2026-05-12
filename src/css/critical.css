@@ -397,9 +397,9 @@
       opacity: 0 !important;
     }
 
-    &.has-smooth-scroll {
+    /* &.has-smooth-scroll {
       scroll-behavior: smooth;
-    }
+    } */
   }
 
   html,

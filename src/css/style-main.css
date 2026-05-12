@@ -432,6 +432,7 @@
     background-position: 100%;
     background-blend-mode: overlay;
     background-color: rgba(10, 24, 65, 0.3);
+    width: 100%;
     min-width: 100%;
     height: auto;
     aspect-ratio: 1.35 / 1;
@@ -439,7 +440,7 @@
     top: clamp(8.25rem, 8vw + 4rem, 10.5rem);
 
     @media (width > 31.25rem) {
-      width: 100%;
+      min-width: unset;
       max-width: 95%;
       border-radius: 1rem;
       left: -1rem;
