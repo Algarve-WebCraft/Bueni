@@ -73,7 +73,7 @@ function runSwupHooks() {
 /////////////////////////////////////////////////////////////* Opening hero intro animations *///////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.body;
   const heroHeading = document.querySelector(".cmp-hero-heading");
