@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   activateHamburgerMenu();
   updateActiveNavLink();
   resetHomeLoadedClass();
-  darkMode();
   menuChangeCategory();
   menuMobileSwipe();
   setGalleryMasonryAndGlightbox();
+  updateCopyrightYear();
   stopTransitionOnResize();
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 100);
   });
 
-  document.documentElement.classList.add("has-smooth-scroll"); 
+  document.documentElement.classList.add("has-smooth-scroll");
 });
 
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*
@@ -73,7 +73,7 @@ function runSwupHooks() {
 /////////////////////////////////////////////////////////////* Opening hero intro animations *///////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  /* return; */
+  return;
 
   const body = document.body;
   const heroHeading = document.querySelector(".cmp-hero-heading");
@@ -538,6 +538,8 @@ function activateHamburgerMenu() {
   const navBarList = document.querySelector(".nav-bar ul");
   let isAnimating = false;
 
+  document.body.style.overflow = "";
+
   hamburgerBtn.addEventListener("click", () => {
     if (isAnimating) return;
     const isOpen = navBar.classList.contains("hamburger-btn__open");
@@ -545,14 +547,20 @@ function activateHamburgerMenu() {
     if (isOpen) {
       isAnimating = true;
       hamburgerBtn.classList.remove("active");
+      document.body.style.overflow = "";
       navBar.classList.remove("hamburger-btn__open");
     } else {
       navBar.style.display = "block";
+
       requestAnimationFrame(() => {
         isAnimating = true;
         hamburgerBtn.classList.add("active");
         navBar.classList.add("hamburger-btn__open");
       });
+
+      setTimeout(() => {
+        document.body.style.overflow = "hidden";
+      }, 300);
     }
 
     setNavAttributes();
@@ -566,22 +574,6 @@ function activateHamburgerMenu() {
     if (e.propertyName !== "transform") return;
 
     isAnimating = false;
-  });
-
-  document.addEventListener("click", (e) => {
-    if (
-      !navBar.classList.contains("hamburger-btn__open") ||
-      e.target === navBar ||
-      e.target === hamburgerBtn ||
-      e.target === navBarList
-    )
-      return;
-
-    isAnimating = true;
-    navBar.classList.remove("hamburger-btn__open");
-    hamburgerBtn.classList.remove("active");
-
-    setNavAttributes();
   });
 }
 
@@ -626,73 +618,14 @@ function updateActiveNavLink() {
   }
 }
 
-/////////////////////////////////////////////////////////////////* Dark-mode change */////////////////////////////////////////////////////////////////////////////////*
+//////////////////////////////////////////////////////////////* Footer copyright-year update *////////////////////////////////////////////////////////////////////////*
 
-function darkMode() {
-  const darkModeButton = document.getElementById("dark-mode-toggle");
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+function updateCopyrightYear() {
+  const currentYear = new Date().getFullYear();
+  const copyrightSymbol = "\u00A9";
 
-  function applyDarkMode() {
-    document.documentElement.classList.add("dark-mode");
-  }
-
-  function applyLightMode() {
-    document.documentElement.classList.remove("dark-mode");
-  }
-
-  function enableDarkMode() {
-    applyDarkMode();
-    localStorage.setItem("theme", "dark");
-  }
-
-  function disableDarkMode() {
-    applyLightMode();
-    localStorage.setItem("theme", "light");
-  }
-
-  function detectColorScheme() {
-    const storedTheme = localStorage.getItem("theme");
-
-    if (storedTheme) {
-      storedTheme === "dark" ? applyDarkMode() : applyLightMode();
-      return;
-    }
-
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    prefersDark ? applyDarkMode() : applyLightMode();
-  }
-
-  detectColorScheme();
-
-  function switchTheme(newTheme) {
-    newTheme === "dark" ? enableDarkMode() : disableDarkMode();
-  }
-
-  mediaQuery.addEventListener("change", (e) => {
-    if (!localStorage.getItem("theme")) {
-      e.matches ? applyDarkMode() : applyLightMode();
-    }
-  });
-
-  darkModeButton.addEventListener("click", () => {
-    const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";
-    darkModeButton.setAttribute("aria-pressed", String(!isPressed));
-
-    const currentTheme = localStorage.getItem("theme") || "light";
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-
-    if (!document.startViewTransition) {
-      switchTheme(newTheme);
-      return;
-    }
-
-    document.startViewTransition(() => {
-      switchTheme(newTheme);
-    });
-  });
+  document.getElementById("year").innerHTML =
+    `${copyrightSymbol} Copyright ${currentYear}`;
 }
 
 ////////////////////////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////////////////////*

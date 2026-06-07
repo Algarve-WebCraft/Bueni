@@ -10,13 +10,20 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 - ABOUT / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .cmp-hero-section__image--pg2-s1 {
-    background: url("/assets/images/bueni-6.avif");
+  .cmp-hero__section--pg2-s1 {
+    background: url("/assets/images/bueni-6.avif") no-repeat;
     background-size: cover;
-    background-position: 50%;
+    background-position: center 0px;
     background-blend-mode: overlay;
-    background-color: rgba(10, 24, 65, 0.35);
-    top: clamp(9rem, 5.5vw + 8.75rem, 13.75rem);
+
+    &::before {
+      --hero-overlay-start: rgba(2, 9, 27, 0.5);
+      --hero-overlay-end: rgba(2, 9, 27, 0.5);
+
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */

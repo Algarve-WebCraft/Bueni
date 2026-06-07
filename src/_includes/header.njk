@@ -2,15 +2,9 @@
   <a href="#introduction" class="skip-to-content">Skip to main content</a>
 
   <div class="header__container">
-    <div class="wrapper wrapper--wide wrapper--header">
+    <div class="wrapper wrapper--wide">
 
       <div id="swup-header-container">
-        <div class="business-logo-container">
-          <a href="/">
-                <img src="/assets/logos/business-logo.webp" class="business-logo" width="200" height="70" fetchpriority="high" decoding="async" loading="eager" alt="Algarve Webcraft's logo.">
-              </a>
-        </div>
-
         <nav id="navigation" class="nav-bar">
           <ul>
             <li><a href="/">Home</a></li>
@@ -23,45 +17,20 @@
       </div>
 
       <div class="hamburger-btn-box">
-        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode" aria-pressed="false">
-          <svg id="svg-sun" viewBox="0 0 64 64">
-            <g fill="#ffe62e">
-              <path d="M20.5 59.7l7-7.2c-2.5-.5-4.8-1.5-6.9-2.9l-.1 10.1"> </path>
-              <path d="M43.5 4.3l-7 7.2c2.5.5 4.8 1.5 6.9 2.9l.1-10.1"> </path>
-              <path d="M4.3 43.5l10.1-.1C13 41.3 12 39 11.5 36.5l-7.2 7"> </path>
-              <path d="M59.7 20.5l-10.1.1c1.3 2.1 2.3 4.4 2.9 6.9l7.2-7"> </path>
-              <path d="M4.3 20.5l7.2 7c.5-2.5 1.5-4.8 2.9-6.9l-10.1-.1"> </path>
-              <path d="M59.7 43.5l-7.2-7c-.5 2.5-1.5 4.8-2.9 6.9l10.1.1"> </path>
-              <path d="M20.5 4.3l.1 10.1c2.1-1.3 4.4-2.3 6.9-2.9l-7-7.2"> </path>
-              <path d="M43.5 59.7l-.1-10.1C41.3 51 39 52 36.5 52.5l7 7.2"> </path>
-            </g>
-            <g fill="#ffce31">
-              <path d="M14.8 44l-4 9.3l9.3-4C18 47.8 16.2 46 14.8 44"> </path>
-              <path d="M49.2 20l4-9.3l-9.2 4c2 1.5 3.8 3.3 5.2 5.3"> </path>
-              <path d="M11.4 28.3L2 32l9.4 3.7c-.3-1.2-.4-2.4-.4-3.7s.1-2.5.4-3.7"> </path>
-              <path d="M52.6 35.7L62 32l-9.4-3.7c.2 1.2.4 2.5.4 3.7c0 1.3-.1 2.5-.4 3.7"> </path>
-              <path d="M20 14.8l-9.3-4l4 9.3c1.5-2.1 3.3-3.9 5.3-5.3"> </path>
-              <path d="M44 49.2l9.3 4l-4-9.3C47.8 46 46 47.8 44 49.2"> </path>
-              <path d="M35.7 11.4L32 2l-3.7 9.4c1.2-.2 2.5-.4 3.7-.4s2.5.1 3.7.4"> </path>
-              <path d="M28.3 52.6L32 62l3.7-9.4c-1.2.3-2.4.4-3.7.4s-2.5-.1-3.7-.4"> </path>
-              <circle cx="32" cy="32" r="19"> </circle>
-          </svg>
-
-          <svg id="svg-moon" viewBox="0 0 24 24">
-            <path d="M12,2h-.46a1,1,0,0,0-.9.77,1,1,0,0,0,.46,1.09A5.92,5.92,0,0,1,14,9,6,6,0,0,1,3.93,13.4a1,1,0,0,0-1.65,1A10,10,0,1,0,12,2Z"></path>
-          </svg>
-        </button>
-
         <button class="hamburger-btn" id="hamburger" aria-label="Toggle The Navigation Menu" aria-controls="navigation" aria-expanded="false">
-          <svg class="hamburger-svg" viewBox="0 0 24 24">
-            <path d="M5 2C3.34315 2 2 3.34315 2 5V8C2 9.65685 3.34315 11 5 11H8C9.65685 11 11 9.65685 11 8V5C11 3.34315 9.65685 2 8 2H5ZM4 5C4 4.44772 4.44772 4 5 4H8C8.55228 4 9 4.44772 9 5V8C9 8.55228 8.55228 9 8 9H5C4.44772 9 4 8.55228 4 8V5Z"></path>
-            <path d="M16 2C14.3431 2 13 3.34315 13 5V8C13 9.65685 14.3431 11 16 11H19C20.6569 11 22 9.65685 22 8V5C22 3.34315 20.6569 2 19 2H16ZM15 5C15 4.44772 15.4477 4 16 4H19C19.5523 4 20 4.44772 20 5V8C20 8.55228 19.5523 9 19 9H16C15.4477 9 15 8.55228 15 8V5Z"></path>
-            <path d="M2 16C2 14.3431 3.34315 13 5 13H8C9.65685 13 11 14.3431 11 16V19C11 20.6569 9.65685 22 8 22H5C3.34315 22 2 20.6569 2 19V16ZM5 15C4.44772 15 4 15.4477 4 16V19C4 19.5523 4.44772 20 5 20H8C8.55228 20 9 19.5523 9 19V16C9 15.4477 8.55228 15 8 15H5Z"></path>
-            <path d="M16 13C14.3431 13 13 14.3431 13 16V19C13 20.6569 14.3431 22 16 22H19C20.6569 22 22 20.6569 22 19V16C22 14.3431 20.6569 13 19 13H16ZM15 16C15 15.4477 15.4477 15 16 15H19C19.5523 15 20 15.4477 20 16V19C20 19.5523 19.5523 20 19 20H16C15.4477 20 15 19.5523 15 19V16Z"></path>
-          </svg>
+          <div class="hamburger">
+            <input type="checkbox" id="hamburger-input" />
+            <label for="hamburger-input">
+              <div class="hamburger-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </label>
+          </div>
         </button>
-      </div>
 
+      </div>
     </div>
   </div>
 </header>
