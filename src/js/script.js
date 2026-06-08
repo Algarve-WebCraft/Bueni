@@ -350,15 +350,15 @@ function activateHamburgerMenu() {
   const hamburgerBtn = document.querySelector(".hamburger-btn");
   const navBar = document.querySelector(".nav-bar");
   const navBarList = document.querySelector(".nav-bar ul");
-  const checkbox = document.querySelector("#hamburger-input");
   let isAnimating = false;
 
   document.body.style.overflow = "";
-  checkbox.checked = false;
 
-  hamburgerBtn.addEventListener("click", () => {
+  hamburgerBtn.addEventListener("click", (e) => {
     if (isAnimating) return;
+
     const isOpen = navBar.classList.contains("hamburger-btn__open");
+    isAnimating = true;
 
     if (isOpen) {
       isAnimating = true;

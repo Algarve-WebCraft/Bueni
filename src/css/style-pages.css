@@ -224,11 +224,15 @@
   }
 
   .contact-flex__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+
     @media (width > 31.25rem) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       justify-items: center;
-      gap: 1rem;
     }
 
     @media (width > 62.5rem) {
@@ -299,7 +303,6 @@
     display: block;
     max-width: 75%;
     aspect-ratio: 1.75 / 1;
-    margin-top: 2rem;
     margin-inline: auto;
     grid-column: 1/ 3;
 
