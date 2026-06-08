@@ -6,10 +6,9 @@ import SwupHeadPlugin from "@swup/head-plugin";
 document.addEventListener("DOMContentLoaded", () => {
   runSwupHooks();
   activateHamburgerMenu();
+  intParallax();
   updateActiveNavLink();
   resetHomeLoadedClass();
-  menuChangeCategory();
-  menuMobileSwipe();
   setGalleryMasonryAndGlightbox();
   updateCopyrightYear();
   stopTransitionOnResize();
@@ -51,8 +50,7 @@ function runSwupHooks() {
   swup.hooks.on("page:view", () => {
     activateHamburgerMenu();
     updateActiveNavLink();
-    menuChangeCategory();
-    homepageMenuJump();
+    intParallax();
     setGalleryMasonryAndGlightbox();
     updateCopyrightYear();
 
@@ -160,6 +158,24 @@ function resetHomeLoadedClass() {
   }
 }
 
+function intParallax() {
+  const parallax = document.querySelectorAll(".cmp-hero-section");
+  const isMobile = window.matchMedia("(max-width: 62.5rem)");
+  const speed = `${isMobile.matches ? "0.25" : "0.5"}`;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY;
+
+      parallax.forEach((el) => {
+        el.style.backgroundPosition = `center ${y * speed}px`;
+      });
+    },
+    { passive: true },
+  );
+}
+
 ////////////////////////////////////////////////////////////* GSAP scrolling animations *////////////////////////////////////////////////////////////////////////////////*
 
 function gsapScrollAnimations() {
@@ -167,7 +183,7 @@ function gsapScrollAnimations() {
 
   /* return; */
 
-  /* ScrollTrigger.defaults({ markers: true });  */
+  /* ScrollTrigger.defaults({ markers: true }); */
 
   ScrollTrigger.refresh();
 
@@ -185,19 +201,19 @@ function gsapScrollAnimations() {
 
     switch (animationType) {
       case "slide-up":
-        animProps = { ...animProps, y: 150 };
+        animProps = { ...animProps, y: 30 };
         break;
       case "slide-down":
-        animProps = { ...animProps, y: -150 };
+        animProps = { ...animProps, y: -30 };
         break;
       case "slide-left":
-        animProps = { ...animProps, x: -150 };
+        animProps = { ...animProps, x: -30 };
         break;
       case "slide-right":
-        animProps = { ...animProps, x: 150 };
+        animProps = { ...animProps, x: 30 };
         break;
       case "scale-size":
-        animProps = { ...animProps, scale: 0.75, duration: 1.5 };
+        animProps = { ...animProps, scale: 0.75, duration: 1 };
         break;
       case "scale":
         gsap.from(el, {
@@ -211,22 +227,6 @@ function gsapScrollAnimations() {
             start: "top 0%",
           },
         });
-        return;
-      case "shutter-horizontal":
-        gsap.fromTo(
-          el,
-          { clipPath: "inset(0 50% 0 50%)" },
-          {
-            clipPath: "inset(0 0% 0 0%)",
-            duration: 0.8,
-            ease: "power3.out",
-            clearProps: "transform, opacity",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 65%",
-            },
-          },
-        );
         return;
       case "fade-in":
       default:
@@ -246,7 +246,7 @@ function gsapScrollAnimations() {
 
   //// Group scroll animations (multiple elements controlled by a single trigger).
   document.querySelectorAll("[data-animate-group]").forEach((group) => {
-    const triggerStartPoint = group.dataset.animateStart || "top 40%";
+    const triggerStartPoint = group.dataset.animateStart || "top 50%";
 
     group.querySelectorAll("[data-animate]").forEach((el) => {
       const animationType = el.dataset.animate;
@@ -254,16 +254,16 @@ function gsapScrollAnimations() {
 
       switch (animationType) {
         case "slide-left":
-          animProps.x = -120;
+          animProps.x = -40;
           break;
         case "slide-right":
-          animProps.x = 120;
+          animProps.x = 40;
           break;
         case "slide-up":
-          animProps.y = 120;
+          animProps.y = 40;
           break;
         case "slide-down":
-          animProps.y = -120;
+          animProps.y = -40;
           break;
       }
 
@@ -293,193 +293,6 @@ function gsapScrollAnimations() {
       );
     });
   });
-}
-
-/////////////////////////////////////////////////////////////////* Menu section change menu *//////////////////////////////////////////////////////////////////////////*
-
-function menuChangeCategory() {
-  const menuButtons = document.querySelectorAll(".menu-headings__inner button");
-  const menuWrapper = document.querySelector(".menu-items-container");
-  let activeMenu = document.querySelector(".menu-items__inner.menu-is-active");
-  let isAnimating = false;
-
-  function updateMenuHeight(selectedMenu) {
-    menuWrapper.style.height = selectedMenu.scrollHeight + "px";
-  }
-
-  if (activeMenu) {
-    requestAnimationFrame(() => updateMenuHeight(activeMenu));
-  }
-
-  window.addEventListener("resize", () => {
-    if (activeMenu) {
-      updateMenuHeight(activeMenu);
-    }
-  });
-
-  menuButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const menuDataTarget = button.dataset.menu;
-      const selectedMenuItem = document.querySelector(
-        `.menu-items__inner[data-menu="${menuDataTarget}"]`,
-      );
-
-      if (selectedMenuItem === activeMenu || isAnimating) return;
-      isAnimating = true;
-
-      const previousMenu = activeMenu;
-
-      const tl = gsap.timeline({
-        defaults: { duration: 0.75, ease: "power3.out" },
-      });
-
-      if (previousMenu) {
-        tl.to(previousMenu, {
-          x: "-5rem",
-          opacity: 0,
-          onStart: () => {
-            gsap.delayedCall(0.35, () => {
-              updateMenuHeight(selectedMenuItem);
-            });
-          },
-          onComplete: () => {
-            previousMenu.classList.remove("menu-is-active");
-            previousMenu.setAttribute("aria-hidden", "true");
-            previousMenu.style.display = "none";
-            gsap.set(previousMenu, { x: 0 });
-          },
-        });
-      }
-
-      tl.fromTo(
-        selectedMenuItem,
-        { x: "5rem", opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          onStart: () => {
-            selectedMenuItem.style.display = "grid";
-            selectedMenuItem.setAttribute("aria-hidden", "false");
-            selectedMenuItem.classList.add("menu-is-active");
-          },
-          onComplete: () => {
-            selectedMenuItem.style.pointerEvents = "auto";
-          },
-        },
-        "-=0.4",
-      );
-
-      tl.eventCallback("onComplete", () => {
-        activeMenu = selectedMenuItem;
-        isAnimating = false;
-      });
-
-      menuButtons.forEach((btn) => {
-        const isActive = btn === button;
-        btn.classList.toggle("menu-is-active", isActive);
-        btn.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-    });
-  });
-}
-
-//// Jump to correct menu section from homepage.
-
-function homepageMenuJump() {
-  const menuWrapper = document.querySelector(".menu-items-container");
-  const menuScrollSection = document.querySelector(".menu-scroll-start-point");
-  const windowHash = window.location.hash.replace("#", "");
-
-  if (!windowHash) return;
-
-  // Prevent menu items from popping in and out due to scrolltriggers when coming from the homepage.
-  menuWrapper.style.opacity = "0";
-
-  setTimeout(() => {
-    menuWrapper.style.opacity = "1";
-  }, 800);
-
-  const targetButton = document.querySelector(
-    `.menu-headings__inner button[data-menu="${windowHash}"]`,
-  );
-  const targetMenu = document.querySelector(
-    `.menu-items__inner[data-menu="${windowHash}"]`,
-  );
-  const activeMenu = document.querySelector(
-    ".menu-items__inner.menu-is-active",
-  );
-  const activeButton = document.querySelector(
-    ".menu-headings__inner button.menu-is-active",
-  );
-
-  if (!targetMenu || !targetButton) return;
-
-  activeMenu.classList.remove("menu-is-active");
-  activeButton.classList.remove("menu-is-active");
-
-  targetMenu.classList.add("menu-is-active");
-  targetMenu.setAttribute("aria-hidden", "false");
-  targetButton.classList.add("menu-is-active");
-  targetButton.setAttribute("aria-selected", "true");
-
-  if (menuWrapper && targetMenu) {
-    menuWrapper.style.height = targetMenu.scrollHeight + "px";
-  }
-
-  menuScrollSection?.scrollIntoView({
-    behavior: "auto",
-    block: "start",
-  });
-
-  // Prevent focus-outline from appearing on menu change
-  window.addEventListener("load", () => {
-    if (window.location.hash) {
-      document.activeElement?.blur();
-    }
-  });
-
-  menuChangeCategory();
-}
-
-///// Mobile swipe functionality.
-
-function menuMobileSwipe() {
-  const menuWrapper = document.querySelector(".menu-items-container");
-  const swipeThreshold = 50;
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  menuWrapper?.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
-
-  menuWrapper?.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    const diff = touchEndX - touchStartX;
-
-    if (Math.abs(diff) < swipeThreshold) return;
-
-    const buttons = Array.from(menuButtons);
-    const activeButton = document.querySelector(
-      ".menu-headings__inner button.menu-is-active",
-    );
-
-    if (!activeButton) return;
-
-    const currentIndex = buttons.indexOf(activeButton);
-
-    if (diff < 0 && currentIndex < buttons.length - 1) {
-      buttons[currentIndex + 1].click();
-    }
-
-    if (diff > 0 && currentIndex > 0) {
-      buttons[currentIndex - 1].click();
-    }
-  }
 }
 
 //////////////////////////////////////////////////////////* Gallery page Masonry layout + Glightbox *//////////////////////////////////////////////////////////////////*
