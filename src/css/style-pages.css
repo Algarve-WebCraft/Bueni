@@ -99,179 +99,23 @@
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 - MENU / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-
-  .cmp-hero-section__image--pg3-s1 {
-    background: url("/assets/images/bueni-18.jpg");
-    background-size: cover;
-    background-position: 50%;
-    background-blend-mode: overlay;
-    background-color: rgba(10, 24, 65, 0.35);
-    top: clamp(9.5rem, 7vw + 8.25rem, 13.5rem);
-  }
-
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 3 - MENU / SECTION-TWO / MENU ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-
-  .menu-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-
-    @media (width > 62.5rem) {
-      gap: 5rem;
-    }
-  }
-
-  .menu-headings-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    text-align: center;
-
-    @media (width > 62.5rem) {
-      flex-direction: row;
-      gap: 7rem;
-    }
-
-    .menu-headings__inner {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-
-      @media (width > 31.25rem) {
-        display: contents;
-      }
-
-      button {
-        position: relative;
-        color: var(--clr-micro-heading-dark);
-        opacity: 0.8;
-        transition: color 0.3s ease-out;
-
-        &:hover:not(.menu-is-active) {
-          color: var(--clr-hover-accent);
-        }
-      }
-
-      button::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: -4px;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--blue-100) 30%,
-          var(--blue-300) 70%,
-          transparent
-        );
-        opacity: 0.85;
-        transform: translateX(-50%);
-        transition:
-          width 0.8s ease,
-          transform 0.8s ease;
-      }
-
-      button.menu-is-active::after {
-        width: 110%;
-        transform: translateX(-50%);
-      }
-    }
-  }
-
-  .menu-items-container {
-    position: relative;
-    touch-action: pan-y;
-    transition: opacity 0.3s ease-out;
-  }
-
-  .blog-heading {
-    margin-top: 5rem;
-  }
-
-  .menu-items__inner {
-    position: absolute;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    opacity: 0;
-    display: none;
-
-    &.menu-is-active {
-      display: grid;
-      opacity: 1;
-    }
-
-    @media (width > 62.5rem) {
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-    }
-  }
-
-  .menu-items__selection {
-    display: flex;
-    gap: 1rem;
-
-    img {
-      width: 100%;
-      max-width: 30%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-
-      @media (width > 62.5rem) {
-        max-width: 35%;
-        aspect-ratio: 1 / 1;
-      }
-    }
-
-    p {
-      opacity: 0.9;
-    }
-
-    .menu-items__selection__text-container {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      flex: 1;
-
-      .menu-items__selection__text-container__inner {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        h3 {
-          font-size: var(--fs-larger-text);
-          font-weight: 500;
-        }
-
-        span {
-          position: relative;
-          font-size: var(--fs-larger-text);
-          font-weight: 300;
-          bottom: 0.35rem;
-        }
-      }
-    }
-  }
-
-  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 4 - GALLERY / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .cmp-hero-section__image--pg4-s1 {
-    background: url("/assets/images/bueni-17.webp");
+  .cmp-hero__section--pg4-s1 {
+    background: url("/assets/images/bueni-21.jpg") no-repeat;
     background-size: cover;
-    background-position: 50%;
+    background-position: center 0px;
     background-blend-mode: overlay;
-    background-color: rgba(10, 24, 65, 0.35);
+
+    &::before {
+      --hero-overlay-start: rgba(2, 9, 27, 0.5);
+      --hero-overlay-end: rgba(2, 9, 27, 0.5);
+
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -335,14 +179,25 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 - CONTACT / SECTION-ONE / HERO ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .cmp-light-section--pg5-s1 {
-    padding-top: clamp(6.75rem, 10vw, 8.35rem);
-    text-align: center;
+  .cmp-hero__section--pg5-s1 {
+    background: url("/assets/images/bueni-17.webp") no-repeat;
+    background-size: cover;
+    background-position: center 0px;
+    background-blend-mode: overlay;
 
-    @media (width > 31.25rem) {
-      text-align: unset;
+    &::before {
+      --hero-overlay-start: rgba(2, 9, 27, 0.5);
+      --hero-overlay-end: rgba(2, 9, 27, 0.5);
+
+      content: "";
+      position: absolute;
+      inset: 0;
     }
   }
+
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 - CONTACT / SECTION-TWO / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
   .contact-flex-container--pg5-s1 {
     margin-right: unset;
@@ -368,18 +223,12 @@
     }
   }
 
-  .contact-flex__text-container--pg5-s1 {
-    margin-top: -1.75rem;
-
+  .contact-flex__text-container {
     @media (width > 31.25rem) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       justify-items: center;
       gap: 1rem;
-    }
-
-    @media (width > 47.5rem) {
-      margin-top: clamp(4rem, 10vw + 1rem, 10rem);
     }
 
     @media (width > 62.5rem) {
@@ -393,7 +242,11 @@
     }
   }
 
-  .contact-text-container__inner-flex--pg5-s1 {
+  .contact-text-container__inner-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
     &:first-of-type {
       @media (width > 62.5rem) {
         justify-self: center;
@@ -409,6 +262,34 @@
       }
       @media (width > 81.25rem) {
         margin-right: clamp(22rem, 32vw, 30rem);
+      }
+    }
+
+    h3 {
+      color: var(--clr-main-text);
+      margin-bottom: 0.25rem;
+    }
+
+    a,
+    span {
+      opacity: 0.75;
+    }
+
+    a {
+      width: fit-content;
+      margin-inline: auto;
+      text-decoration: underline;
+      text-decoration-thickness: 0.05em;
+      text-underline-offset: 0.3em;
+      text-decoration-color: #02031c30;
+      transition: transform 0.5s ease-out;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      @media (width > 31.25rem) {
+        margin-inline: unset;
       }
     }
   }

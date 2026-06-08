@@ -54,6 +54,7 @@ function runSwupHooks() {
     menuChangeCategory();
     homepageMenuJump();
     setGalleryMasonryAndGlightbox();
+    updateCopyrightYear();
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -536,9 +537,11 @@ function activateHamburgerMenu() {
   const hamburgerBtn = document.querySelector(".hamburger-btn");
   const navBar = document.querySelector(".nav-bar");
   const navBarList = document.querySelector(".nav-bar ul");
+  const checkbox = document.querySelector("#hamburger-input");
   let isAnimating = false;
 
   document.body.style.overflow = "";
+  checkbox.checked = false;
 
   hamburgerBtn.addEventListener("click", () => {
     if (isAnimating) return;
@@ -550,8 +553,6 @@ function activateHamburgerMenu() {
       document.body.style.overflow = "";
       navBar.classList.remove("hamburger-btn__open");
     } else {
-      navBar.style.display = "block";
-
       requestAnimationFrame(() => {
         isAnimating = true;
         hamburgerBtn.classList.add("active");
