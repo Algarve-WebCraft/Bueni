@@ -398,10 +398,10 @@
   .cmp-hero-section-wrapper {
     display: grid;
     place-items: center;
-    min-height: 80vh;
+    min-height: 85vh;
     z-index: 2;
 
-    @media (width > 47.5rem) {
+    @media (width > 32.5rem) {
       min-height: 100vh;
     }
   }
