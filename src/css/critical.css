@@ -367,6 +367,7 @@
 
   .cmp-hero-section {
     position: relative;
+    max-height: 90svh;
     background: url("/assets/images/1936623.jpg");
     background-size: cover;
     background-position: center 0px;
@@ -392,6 +393,10 @@
         var(--hero-overlay-start),
         var(--hero-overlay-end)
       );
+    }
+
+    @media (width > 47.5rem) {
+      max-height: 100vh;
     }
   }
 
