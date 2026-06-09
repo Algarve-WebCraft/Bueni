@@ -387,9 +387,9 @@ function activateHamburgerMenu() {
 
     setNavAttributes();
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       isAnimating = false;
-    }, 800);
+    }, 800); */
   });
 
   navBar.addEventListener("transitionend", (e) => {

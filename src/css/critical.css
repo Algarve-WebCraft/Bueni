@@ -403,7 +403,7 @@
   .cmp-hero-section-wrapper {
     display: grid;
     place-items: center;
-    min-height: 90vh;
+    min-height: 92vh;
     z-index: 2;
 
     @media (width > 32.5rem) {
