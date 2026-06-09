@@ -398,7 +398,7 @@
   .cmp-hero-section-wrapper {
     display: grid;
     place-items: center;
-    min-height: 90vh;
+    min-height: 80vh;
     z-index: 2;
 
     @media (width > 47.5rem) {
@@ -410,6 +410,7 @@
 @layer base {
   html {
     scrollbar-width: thin;
+    overflow-x: hidden;
 
     &.is-loading body {
       opacity: 0 !important;
