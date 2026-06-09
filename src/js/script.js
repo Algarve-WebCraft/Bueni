@@ -9,9 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
   intParallax();
   updateActiveNavLink();
   resetHomeLoadedClass();
-  setGalleryMasonryAndGlightbox();
   updateCopyrightYear();
   stopTransitionOnResize();
+
+  setTimeout(() => {
+    setGalleryMasonryAndGlightbox();
+  }, 200);
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -49,6 +52,7 @@ const swup = new Swup({
 function runSwupHooks() {
   swup.hooks.on("page:view", () => {
     activateHamburgerMenu();
+    resetHamburger();
     updateActiveNavLink();
     intParallax();
     setGalleryMasonryAndGlightbox();
@@ -67,6 +71,12 @@ function runSwupHooks() {
   swup.hooks.on("visit:end", () => {
     document.documentElement.classList.add("has-smooth-scroll");
   });
+
+  function resetHamburger() {
+    const hamburgerBtn = document.querySelector(".hamburger-btn");
+
+    hamburgerBtn.classList.remove("active");
+  }
 }
 
 /////////////////////////////////////////////////////////////* Opening hero intro animations *///////////////////////////////////////////////////////////////////////////*
@@ -361,13 +371,11 @@ function activateHamburgerMenu() {
     isAnimating = true;
 
     if (isOpen) {
-      isAnimating = true;
       hamburgerBtn.classList.remove("active");
       document.body.style.overflow = "";
       navBar.classList.remove("hamburger-btn__open");
     } else {
       requestAnimationFrame(() => {
-        isAnimating = true;
         hamburgerBtn.classList.add("active");
         navBar.classList.add("hamburger-btn__open");
       });

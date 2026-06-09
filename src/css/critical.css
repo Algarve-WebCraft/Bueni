@@ -249,7 +249,9 @@
     }
   }
 
-  img:not(.business-logo):not(.hero-business-full-logo) {
+  img:not(.business-logo):not(.hero-business-full-logo):not(
+      .algarve-webcraft-logo img
+    ) {
     border-radius: 0.35rem;
     box-shadow:
       0 2px 4px rgba(0, 0, 0, 0.25),
@@ -362,6 +364,43 @@
     background-color: var(--clr-button-background-white);
     color: var(--clr-button-text);
   }
+
+  .cmp-hero-section {
+    position: relative;
+    background: url("/assets/images/1936623.jpg");
+    background-size: cover;
+    background-position: center 0px;
+    z-index: 0;
+    background-attachment: scroll;
+    will-change: background-position;
+
+    &::before {
+      --hero-overlay-start: rgba(0, 0, 0, 0.92);
+      --hero-overlay-end: rgba(0, 0, 0, 0.42);
+
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      /* background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.78),
+        rgba(0, 0, 0, 0.38)
+      ); */
+      background: linear-gradient(
+        to top,
+        var(--hero-overlay-start),
+        var(--hero-overlay-end)
+      );
+    }
+  }
+
+  .cmp-hero-section-wrapper {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    z-index: 2;
+  }
 }
 
 @layer base {
@@ -416,7 +455,6 @@
 
     @media (width > 62.5rem) {
       top: 4.5rem;
-      right: 1.65rem;
     }
   }
 
@@ -452,8 +490,9 @@
         height: 3px;
         margin: 7px 0;
         border-radius: 5px;
-        background: linear-gradient(to right, var(--blue-300), var(--blue-500));
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+        background: var(--white-300);
+        filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
         transition:
           opacity 0.2s ease-in-out,
           transform 0.3s ease-in-out;
@@ -532,44 +571,6 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\      *** HERO-SECTION ***       \\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .cmp-hero-section {
-    position: relative;
-    min-height: 100svh;
-    background: url("/assets/images/1936623.jpg");
-    background-size: cover;
-    background-position: center 0px;
-    z-index: 0;
-    background-attachment: scroll;
-    will-change: background-position;
-
-    &::before {
-      --hero-overlay-start: rgba(0, 0, 0, 0.92);
-      --hero-overlay-end: rgba(0, 0, 0, 0.42);
-
-      content: "";
-      position: absolute;
-      inset: 0;
-
-      /* background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.78),
-        rgba(0, 0, 0, 0.38)
-      ); */
-      background: linear-gradient(
-        to top,
-        var(--hero-overlay-start),
-        var(--hero-overlay-end)
-      );
-    }
-  }
-
-  .cmp-hero-section-wrapper {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    z-index: 2;
-  }
-
   .hero-business-full-logo {
     position: relative;
     width: 50%;
@@ -595,11 +596,15 @@
   }
 
   .wrapper--narrow {
-    max-width: calc(75.25rem + 2rem);
+    max-width: calc(73rem + 2rem);
   }
 
   .wrapper--narrow-m {
-    max-width: calc(82.25rem + 2rem);
+    max-width: calc(80rem + 2rem);
+  }
+
+  .wrapper--narrow-l {
+    max-width: calc(82rem + 2rem);
   }
 
   .wrapper--wide {
@@ -620,6 +625,12 @@
 
   .wrapper--mobile-m {
     @media (width < 47.5rem) {
+      max-width: calc(35.62rem + 2rem);
+    }
+  }
+
+  .wrapper--mobile-tablet-m {
+    @media (width < 62.5rem) {
       max-width: calc(35.62rem + 2rem);
     }
   }
