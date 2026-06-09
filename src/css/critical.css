@@ -293,6 +293,11 @@
     font-size: var(--fs-hero-heading);
     color: var(--clr-hero-heading-white);
     z-index: 100;
+    margin-bottom: 3rem;
+
+    @media (width > 32.5rem) {
+      margin-bottom: 0;
+    }
   }
 
   .cmp-main-text,
@@ -398,7 +403,7 @@
   .cmp-hero-section-wrapper {
     display: grid;
     place-items: center;
-    min-height: 85vh;
+    min-height: 90vh;
     z-index: 2;
 
     @media (width > 32.5rem) {
