@@ -362,7 +362,7 @@ function activateHamburgerMenu() {
   const navBarList = document.querySelector(".nav-bar ul");
   let isAnimating = false;
 
-  document.body.style.overflow = "";
+  document.documentElement.style.overflowY = "";
 
   hamburgerBtn.addEventListener("click", (e) => {
     if (isAnimating) return;
@@ -372,7 +372,7 @@ function activateHamburgerMenu() {
 
     if (isOpen) {
       hamburgerBtn.classList.remove("active");
-      document.body.style.overflow = "";
+      document.documentElement.style.overflowY = "";
       navBar.classList.remove("hamburger-btn__open");
     } else {
       requestAnimationFrame(() => {
@@ -381,7 +381,7 @@ function activateHamburgerMenu() {
       });
 
       setTimeout(() => {
-        document.body.style.overflow = "hidden";
+        document.documentElement.style.overflowY = "hidden";
       }, 300);
     }
 
