@@ -372,7 +372,7 @@
 
   .cmp-hero-section {
     position: relative;
-    background: url("/assets/images/1936623.jpg");
+    background: url("/assets/images/home-bg.jpg");
     background-size: cover;
     background-position: center 0px;
     z-index: 0;
@@ -451,10 +451,6 @@
     z-index: 1000;
   }
 
-  #swup-header-container {
-    display: contents;
-  }
-
   .hamburger-btn-box {
     position: relative;
     display: flex;
@@ -491,7 +487,7 @@
 
         &:hover span,
         &:focus-visible span {
-          opacity: 0.75;
+          opacity: 0.6;
         }
       }
 
@@ -500,11 +496,11 @@
         height: 3px;
         margin: 7px 0;
         border-radius: 5px;
-        background: var(--white-300);
+        background: var(--white-100);
         filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5))
           drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
         transition:
-          opacity 0.2s ease-in-out,
+          opacity 0.3s ease-out,
           transform 0.3s ease-in-out;
       }
     }
@@ -523,7 +519,7 @@
   }
 
   .nav-bar {
-    position: absolute;
+    position: fixed;
     background: var(--black-200);
     color: var(--clr-nav-text-white);
     font-size: var(--fs-nav-text);
@@ -539,8 +535,10 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     transform: translateX(-100%);
+    opacity: 1;
     /* prettier-ignore */
-    transition: transform 0.35s ease-out;
+    transition: transform 0.35s ease-out,
+     opacity 0.4s ease;
 
     ul {
       display: flex;
@@ -725,69 +723,26 @@
 
   /* SWUP animation changes */
 
-  .transition-reverse-slide,
-  .transition-reverse-slide-main,
-  .transition-reverse-slide-opposite {
-    will-change: transform;
-  }
-
-  .transition-slide,
-  .transition-slide-opposite {
+  .transition-slide-down {
+    transform: translate(0, 0);
     opacity: 1;
-    transform: translateX(0);
+  }
+
+  .transition-slide-down {
     transition:
-      transform 0.6s ease-in-out,
-      opacity 0.5s;
+      transform 0.3s ease,
+      opacity 0.4s ease;
   }
 
-  .transition-reverse-slide {
-    transform: translateY(0);
-    transform-origin: left;
-    transition: 0.5s;
-    position: relative;
-  }
-
-  .transition-reverse-slide-main {
-    position: relative;
-    transform: translateY(0);
-    transform-origin: left;
-    transition: transform 0.6s;
+  html.is-leaving .transition-slide-down,
+  html.is-rendering .transition-slide-down {
+    transform: translateY(20%);
+    opacity: 0;
   }
 
   .transition-fade {
     opacity: 1;
-    transition: opacity 0.4s ease;
-  }
-
-  html.is-rendering .transition-slide,
-  html.is-rendering .transition-slide-opposite,
-  html.is-animating .transition-slide-opposite {
-    opacity: 0;
-    transform: translateX(-80%);
-  }
-
-  html.is-animating .transition-slide {
-    opacity: 0;
-    transform: translateX(80%);
-  }
-
-  html.is-animating .transition-reverse-slide-main,
-  html.is-rendering .transition-reverse-slide-main {
-    transform: translateY(-70%);
-
-    @media (width > 47.5rem) {
-      transform: translateY(-55%);
-    }
-
-    @media (width > 62.5rem) {
-      transform: translateY(-40%);
-    }
-  }
-
-  html.is-animating .transition-reverse-slide,
-  html.is-rendering .transition-reverse-slide {
-    opacity: 0;
-    transform: translateY(100%);
+    transition: opacity 0.2s ease;
   }
 
   html.is-animating .transition-fade,

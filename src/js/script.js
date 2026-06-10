@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ///////////////////////////////////////////////////////////* Swup page navigation *////////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  containers: ["#swup", "#swup-header-container", "#footer"],
+  containers: ["#swup", "#footer"],
   animateHistoryBrowsing: true,
   respectScroll: false,
 
@@ -51,8 +51,6 @@ const swup = new Swup({
 
 function runSwupHooks() {
   swup.hooks.on("page:view", () => {
-    activateHamburgerMenu();
-    resetHamburger();
     updateActiveNavLink();
     intParallax();
     setGalleryMasonryAndGlightbox();
@@ -72,24 +70,27 @@ function runSwupHooks() {
     document.documentElement.classList.add("has-smooth-scroll");
   });
 
-  function resetHamburger() {
-    const hamburgerBtn = document.querySelector(".hamburger-btn");
+  swup.hooks.on("page:view", () => {
+    setTimeout(() => {
+      const navBar = document.querySelector(".nav-bar");
+      const hamburgerBtn = document.querySelector(".hamburger-btn");
 
-    hamburgerBtn.classList.remove("active");
-  }
+      navBar?.classList.remove("hamburger-btn__open");
+      hamburgerBtn?.classList.remove("active");
+
+      document.documentElement.style.overflowY = "";
+    }, 300);
+  });
 }
 
 /////////////////////////////////////////////////////////////* Opening hero intro animations *///////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.body;
-  const heroHeading = document.querySelector(".cmp-hero-heading");
 
   if (!document.body.classList.contains("home")) return;
-
-  heroHeading.classList.remove("transition-fade");
 
   window.addEventListener("load", () => {
     setTimeout(() => {
@@ -97,68 +98,36 @@ function gsapOpeningHomeAnimations() {
     }, 0);
   });
 
-  if (body.classList.contains("home")) {
-    document.documentElement.style.overflow = "hidden";
-  }
-
   const tl = gsap.timeline({
     defaults: { ease: "power3.out" },
     delay: 0.2,
   });
 
-  tl.fromTo(
-    ".cmp-hero-section__image",
+  (tl.fromTo(
+    ".cmp-hero-section",
     {
-      clipPath: "inset(0 0 100% 0)",
-      transform: "translateY(30px) scale(1.2)",
+      opacity: "0",
     },
     {
-      clipPath: "inset(0 0 0% 0)",
-      duration: 1.2,
-      ease: "power3.inOut",
+      opacity: "1",
+      duration: 1.5,
+      ease: "power1.inOut",
     },
-  )
-    .to(
-      ".cmp-hero-section__image",
+  ),
+    tl.fromTo(
+      ".hero-business-full-logo",
       {
-        y: 0,
-        scale: 1,
-        duration: 1.2,
-        ease: "power3.inOut",
+        opacity: "0",
+        scale: "0.9",
       },
-      0,
-    )
-    .from(
-      ".cmp-hero-heading",
       {
-        opacity: 0,
-        x: -150,
-        duration: 1.5,
-        onComplete() {
-          heroHeading.classList.add("transition-fade");
-          document.documentElement.style.overflow = "auto";
-        },
+        opacity: "1",
+        scale: "1",
+        duration: 1,
+        ease: "power2.inOut",
       },
-      "+=0.2",
-    )
-    .from(
-      ".header",
-      {
-        y: -30,
-        opacity: 0,
-        duration: 2,
-      },
-      "-=1",
-    )
-    .from(
-      ".hero-flex__inner-flex",
-      {
-        opacity: 0,
-        y: 100,
-        duration: 2,
-      },
-      "-=1.75",
-    );
+      "-=0.4'",
+    ));
 }
 
 function resetHomeLoadedClass() {
@@ -386,10 +355,6 @@ function activateHamburgerMenu() {
     }
 
     setNavAttributes();
-
-    /* setTimeout(() => {
-      isAnimating = false;
-    }, 800); */
   });
 
   navBar.addEventListener("transitionend", (e) => {
@@ -426,17 +391,17 @@ function updateActiveNavLink() {
   for (const link of navBarLinks) {
     const linkPath = new URL(link.href).pathname;
 
-    if (linkPath === currentPath) {
-      link.classList.add("active-link");
+    setTimeout(() => {
+      if (linkPath === currentPath) {
+        link.classList.add("active-link");
 
-      requestAnimationFrame(() => {
-        link.classList.add("animate-underline");
-      });
-
-      break; // Break the loop so only the homepage link has the active-link class.
-    } else {
-      link.classList.remove("active-link", "animate-underline");
-    }
+        requestAnimationFrame(() => {
+          link.classList.add("animate-underline");
+        });
+      } else {
+        link.classList.remove("active-link", "animate-underline");
+      }
+    }, 350);
   }
 }
 
