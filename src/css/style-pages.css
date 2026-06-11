@@ -112,8 +112,8 @@
     background-blend-mode: overlay;
 
     &::before {
-      --hero-overlay-start: rgba(2, 9, 27, 0.5);
-      --hero-overlay-end: rgba(2, 9, 27, 0.5);
+      --hero-overlay-start: rgba(2, 9, 27, 0.6);
+      --hero-overlay-end: rgba(2, 9, 27, 0.6);
 
       content: "";
       position: absolute;
