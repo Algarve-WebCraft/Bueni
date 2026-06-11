@@ -394,12 +394,8 @@ function updateActiveNavLink() {
     setTimeout(() => {
       if (linkPath === currentPath) {
         link.classList.add("active-link");
-
-        requestAnimationFrame(() => {
-          link.classList.add("animate-underline");
-        });
       } else {
-        link.classList.remove("active-link", "animate-underline");
+        link.classList.remove("active-link");
       }
     }, 350);
   }

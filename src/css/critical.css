@@ -556,13 +556,14 @@
       text-decoration: none;
       transition: color 0.3s ease-out;
 
-      &:hover {
-        color: var(--clr-hover-accent) !important;
+      &:hover:not(.active-link) {
+        color: var(--clr-hover-accent);
       }
 
       &.active-link {
         transform: scale(1.35);
         transform-origin: center;
+        cursor: default;
       }
     }
   }

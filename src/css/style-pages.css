@@ -162,7 +162,7 @@
     }
 
     a:nth-of-type(1) img {
-      aspect-ratio: 1 / 1.7;
+      aspect-ratio: 1 / 1.55;
       object-position: 30% 100%;
     }
 
@@ -178,6 +178,7 @@
 
     a:nth-of-type(4) img {
       aspect-ratio: 1.45 / 1;
+      object-position: center 70%;
     }
 
     a:nth-of-type(5) img {
@@ -191,7 +192,7 @@
     }
 
     a:nth-of-type(7) img {
-      aspect-ratio: 2.3 / 1;
+      aspect-ratio: 1.75 / 1;
       object-position: center 50%;
     }
 
@@ -250,8 +251,8 @@
     }
 
     a:nth-of-type(19) img {
-      aspect-ratio: 2.5 / 1;
-      object-position: center 65%;
+      aspect-ratio: 2 / 1;
+      object-position: center 77%;
     }
 
     a:nth-of-type(20) img {
@@ -275,12 +276,12 @@
     }
 
     a:nth-of-type(24) img {
-      aspect-ratio: 1.7 / 1;
-      object-position: center 55%;
+      aspect-ratio: 1.65 / 1;
+      object-position: center 50%;
     }
 
     a:nth-of-type(25) img {
-      aspect-ratio: 1.3 / 1;
+      aspect-ratio: 1.45 / 1;
       object-position: center 55%;
     }
 
