@@ -68,7 +68,7 @@
       }
 
       img:nth-child(2) {
-        aspect-ratio: 1 / 1.4;
+        aspect-ratio: 1 / 1.25;
       }
 
       img:nth-child(3) {
@@ -76,12 +76,13 @@
         aspect-ratio: 2 / 1;
         grid-column: span 2;
         justify-self: center;
+        max-width: 80%;
       }
 
       @media (width > 62.5rem) {
         img:nth-child(1) {
           aspect-ratio: 1 / 1.2;
-          max-width: 85%;
+          max-width: 82%;
           object-position: center 30%;
         }
 
@@ -110,13 +111,14 @@
     .about-text-container {
       max-width: 100%;
 
-      @media (width > 47.5rem) {
+      @media (width > 62.5rem) {
         max-width: 55%;
       }
     }
 
     .article-image-container {
-      max-width: 100%;
+      max-width: 70%;
+      margin-inline: auto;
     }
 
     .about-container__btn {
