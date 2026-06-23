@@ -79,7 +79,7 @@ function runSwupHooks() {
       hamburgerBtn?.classList.remove("active");
 
       document.documentElement.style.overflowY = "";
-    }, 300);
+    }, 550);
   });
 }
 
